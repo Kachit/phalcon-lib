@@ -1,7 +1,8 @@
 {
     "name": "kachit/phalcon-lib",
     "require": {
-        "php": ">=5.4.0"
+        "php": ">=5.4.0",
+        "phalcon/devtools": "dev-master"
     },
     "require-dev": {
         "satooshi/php-coveralls": "dev-master"
