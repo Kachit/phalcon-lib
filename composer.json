@@ -1,0 +1,29 @@
+{
+    "name": "kachit/phalcon-lib",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "satooshi/php-coveralls": "dev-master"
+    },
+    "description": "Phalcon base library",
+    "version": "0.0.1",
+    "keywords": ["Phalcon"],
+    "support": {
+        "email": "kachit@yandex.ru",
+        "source": "https://github.com/Kachit/phalcon-lib"
+    },
+    "autoload": {
+        "psr-0": {"Kachit\\Phalcon": "src/"}
+    },
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kachit",
+            "email": "kachit@yandex.ru",
+            "homepage": "https://github.com/kachit/",
+            "role": "Developer"
+        }
+    ]
+}
