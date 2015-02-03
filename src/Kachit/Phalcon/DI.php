@@ -1,6 +1,6 @@
 <?php
 /**
- * DI
+ * Dependency Injection container
  *
  * @author Kachit
  */

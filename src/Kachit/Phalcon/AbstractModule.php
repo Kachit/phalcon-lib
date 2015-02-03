@@ -13,8 +13,6 @@ use Phalcon\Loader,
     Phalcon\Config,
     Phalcon\Mvc\ModuleDefinitionInterface;
 
-use Kachit\Phalcon\Traits\ConfigTrait;
-
 abstract class AbstractModule implements ModuleDefinitionInterface {
 
     /**
