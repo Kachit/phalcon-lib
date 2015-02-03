@@ -36,16 +36,7 @@ class Bootstrap {
      *
      * @return $this
      */
-    public function init() {
-        return $this;
-    }
-
-    /**
-     * Get application
-     *
-     * @return Application
-     */
-    public function getApplication() {
+    public function initApplication() {
         return $this->application;
     }
 
