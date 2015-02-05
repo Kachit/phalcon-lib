@@ -1,10 +1,10 @@
 <?php
 /**
- * Class Database
+ * Volt template engine service provider
  * 
- * @author antoxa <kornilov@realweb.ru>
+ * @author Kachit
+ * @package Kachit\Phalcon\ServiceProvider
  */
-
 namespace Kachit\Phalcon\ServiceProvider;
 
 use Phalcon\Mvc\View\Engine\Volt as VoltEngine;

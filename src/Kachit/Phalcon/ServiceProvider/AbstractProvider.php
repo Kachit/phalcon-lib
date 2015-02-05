@@ -1,8 +1,8 @@
 <?php
 /**
- * Class AbstractProvider
+ * Abstract service provider
  * 
- * @author antoxa <kornilov@realweb.ru>
+ * @author Kachit
  * @package Kachit\Phalcon\ServiceProvider
  */
 namespace Kachit\Phalcon\ServiceProvider;

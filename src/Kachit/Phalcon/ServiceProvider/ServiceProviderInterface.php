@@ -1,8 +1,8 @@
 <?php
 /**
- * Class ServiceProviderInterface
+ * Service provider interface
  * 
- * @author antoxa <kornilov@realweb.ru>
+ * @author Kachit
  * @package Kachit\Phalcon\ServiceProvider
  */
 namespace Kachit\Phalcon\ServiceProvider;

@@ -1,10 +1,10 @@
 <?php
 /**
- * Class Database
+ * Database service provider
  * 
- * @author antoxa <kornilov@realweb.ru>
+ * @author Kachit
+ * @package Kachit\Phalcon\ServiceProvider
  */
-
 namespace Kachit\Phalcon\ServiceProvider;
 
 use Phalcon\DI\FactoryDefault as DI;
