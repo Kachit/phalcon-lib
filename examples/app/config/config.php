@@ -16,10 +16,10 @@ return [
     ],
     'database' => [
         'adapter'  => 'Mysql',
-        'host'     => 'psfc.loc',
+        'host'     => 'localhost',
         'username' => 'mysql',
         'password' => 'mysql',
-        'dbname'   => 'adult_fight_club',
+        'dbname'   => 'database',
     ],
     'application' => [
         'debug' => false,
