@@ -46,7 +46,7 @@ abstract class AbstractBootstrap {
     /**
      * Init application
      *
-     * @return $this
+     * @return Application
      */
     public function registerApplication() {
         $this->registerConfig();
