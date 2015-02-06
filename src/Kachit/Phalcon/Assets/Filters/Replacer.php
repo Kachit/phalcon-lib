@@ -4,7 +4,7 @@
  *
  * @author Kachit
  */
-namespace Kachit\Phalcon\Filter;
+namespace Kachit\Phalcon\Assets\Filters;
 
 use Phalcon\Assets\FilterInterface;
 

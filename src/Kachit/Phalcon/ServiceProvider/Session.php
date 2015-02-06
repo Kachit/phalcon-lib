@@ -16,7 +16,6 @@ class Session extends AbstractProvider {
      */
     public function register() {
         $this->container->set('session', function () {
-            $this->config->count();
             $session = new SessionAdapter();
             $session->start();
             return $session;

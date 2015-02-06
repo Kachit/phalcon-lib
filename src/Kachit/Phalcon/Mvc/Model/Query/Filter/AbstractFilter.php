@@ -4,7 +4,7 @@
  *
  * @author Kachit
  */
-namespace Kachit\Phalcon\Mvc\Model\Filter;
+namespace Kachit\Phalcon\Mvc\Model\Query\Filter;
 
 abstract class AbstractFilter {
 

@@ -23,7 +23,7 @@ class BootstrapTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testInitApplication() {
-        $result = $this->testable->initApplication();
+        $result = $this->testable->registerApplication();
         $this->assertInstanceOf('Phalcon\Mvc\Application', $result);
     }
 }

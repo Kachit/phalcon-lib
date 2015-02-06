@@ -6,7 +6,8 @@
  */
 namespace Kachit\Phalcon\Mvc\Model\Repository;
 
-use Kachit\Phalcon\Mvc\Model\Filter\AbstractFilter;
+use Kachit\Phalcon\Mvc\Model\Query\Filter\AbstractFilter;
+
 use Phalcon\DI\Injectable;
 use Phalcon\Mvc\Model\Manager;
 use Phalcon\Mvc\Model;
@@ -32,6 +33,10 @@ abstract class AbstractRepository extends Injectable {
             ->addFrom($this->getModelName(), $alias);
     }
 
+    /**
+     * @param $id
+     * @return Model
+     */
     public function findByPk($id) {
         return $this->createQuery()->where('id = ' . $id)->getQuery()->getSingleResult();
     }
