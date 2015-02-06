@@ -8,7 +8,7 @@
 namespace Kachit\Phalcon\ServiceProvider;
 
 use Phalcon\DI\FactoryDefault as DI;
-use Kachit\Phalcon\AbstractFactory;
+use Kachit\Phalcon\Common\AbstractFactory;
 
 class Factory extends AbstractFactory {
 
@@ -28,10 +28,12 @@ class Factory extends AbstractFactory {
     }
 
     /**
-     * @param $className
-     * @return mixed
+     * Create new class
+     *
+     * @param string $className
+     * @return object
      */
-    protected function loadClass($className) {
+    protected function createNewClass($className) {
         return new $className($this->container);
     }
 

@@ -7,7 +7,7 @@
  */
 namespace Kachit\Phalcon\Db\Adapter\Pdo;
 
-use Kachit\Phalcon\AbstractFactory;
+use Kachit\Phalcon\Common\AbstractFactory;
 
 class Factory extends AbstractFactory {
     /**

@@ -7,7 +7,7 @@
  */
 namespace Kachit\Phalcon\Session;
 
-use Kachit\Phalcon\AbstractFactory;
+use Kachit\Phalcon\Common\AbstractFactory;
 
 class Factory extends AbstractFactory {
     /**

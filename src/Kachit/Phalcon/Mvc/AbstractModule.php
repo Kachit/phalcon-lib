@@ -4,7 +4,7 @@
  *
  * @author Kachit
  */
-namespace Kachit\Phalcon;
+namespace Kachit\Phalcon\Mvc;
 
 use Phalcon\Loader,
     Phalcon\Config,
