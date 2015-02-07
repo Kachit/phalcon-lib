@@ -15,10 +15,10 @@ class Loader extends AbstractProvider {
      * Register services
      */
     public function register() {
-        $this->container->set('loader', function () {
-            $loader = new PhalconLoader();
-            $loader->registerNamespaces($this->config->loader->namespaces);
-            $loader->register();
+        $loader = new PhalconLoader();
+        $loader->registerNamespaces($this->config->loader->namespaces->toArray());
+        $loader->register();
+        $this->container->set('loader', function () use ($loader){
             return $loader;
         });
     }

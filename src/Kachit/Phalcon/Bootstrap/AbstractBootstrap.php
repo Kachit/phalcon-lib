@@ -57,13 +57,6 @@ abstract class AbstractBootstrap {
     }
 
     /**
-     * @return DI
-     */
-    public function getDi() {
-        return $this->di;
-    }
-
-    /**
      * @param DI $di
      */
     public function setDi(DI $di) {
