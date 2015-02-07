@@ -1,8 +1,9 @@
 <?php
 /**
- * Bootstrap
+ * Bootstrap application loader
  *
  * @author Kachit
+ * @package Kachit\Phalcon\Bootstrap
  */
 namespace Kachit\Phalcon\Bootstrap;
 
@@ -75,7 +76,7 @@ abstract class AbstractBootstrap {
     }
 
     /**
-     *
+     * Create services factory
      */
     protected function createServiceFactory() {
         $this->providersFactory = new ProvidersFactory($this->di);
@@ -91,7 +92,7 @@ abstract class AbstractBootstrap {
     }
 
     /**
-     *
+     * Register services
      */
     protected function registerServices() {
         foreach ($this->config->services->toArray() as $service) {
@@ -100,7 +101,9 @@ abstract class AbstractBootstrap {
     }
 
     /**
-     * @param $service
+     * Register single service provider
+     *
+     * @param string $service
      */
     protected function registerServiceProvider($service) {
         $serviceProvider = $this->providersFactory->getProvider($service);
@@ -108,7 +111,7 @@ abstract class AbstractBootstrap {
     }
 
     /**
-     *
+     * Register modules
      */
     protected function registerModules() {
         $this->application->registerModules($this->config->modules->toArray());

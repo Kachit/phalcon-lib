@@ -1,8 +1,9 @@
 <?php
 /**
  * CLI bootstrap application loader
- * 
- * @author antoxa <kornilov@realweb.ru>
+ *
+ * @author Kachit
+ * @package Kachit\Phalcon\Bootstrap
  */
 namespace Kachit\Phalcon\Bootstrap;
 

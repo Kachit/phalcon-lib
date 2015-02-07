@@ -17,7 +17,7 @@ class View extends AbstractProvider {
     public function register() {
         $this->container->set('view', function() {
             $view = new PhalconView();
-            $view->setViewsDir($this->config->viewDir);
+            $view->setViewsDir($this->config->view->viewsDir);
             return $view;
         });
     }

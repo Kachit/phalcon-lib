@@ -1,6 +1,6 @@
 <?php
 /**
- * Session service provider
+ * Class loader provider
  *
  * @author Kachit
  * @package Kachit\Phalcon\ServiceProvider

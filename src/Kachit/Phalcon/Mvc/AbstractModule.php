@@ -1,21 +1,21 @@
 <?php
 /**
- * Module
+ * Abstract module loader
  *
  * @author Kachit
+ * @package Kachit\Phalcon\Mvc
  */
 namespace Kachit\Phalcon\Mvc;
 
 use Phalcon\Loader,
     Phalcon\Config,
+    Phalcon\DiInterface,
     Phalcon\Mvc\ModuleDefinitionInterface;
 
 abstract class AbstractModule implements ModuleDefinitionInterface {
 
     /**
      * Registers an autoloader related to the module
-     *
-     * @param \Phalcon\DiInterface $dependencyInjector
      */
     public function registerAutoloaders() {
         // TODO: Implement registerAutoloaders() method.
@@ -24,7 +24,7 @@ abstract class AbstractModule implements ModuleDefinitionInterface {
     /**
      * Registers services related to the module
      *
-     * @param \Phalcon\DiInterface $dependencyInjector
+     * @param DiInterface $dependencyInjector
      */
     public function registerServices($dependencyInjector) {
         // TODO: Implement registerServices() method.

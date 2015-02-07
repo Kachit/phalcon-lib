@@ -8,16 +8,29 @@
 namespace Kachit\Phalcon\ServiceProvider;
 
 use Phalcon\DI\FactoryDefault as DI;
-use Phalcon\Db\Adapter\Pdo\Mysql;
+use Kachit\Phalcon\Db\Adapter\Pdo\Factory as AdaptersFactory;
 
 class Database extends AbstractProvider {
+
+    /**
+     * @var Factory
+     */
+    protected $dbAdaptersFactory;
+
+    /**
+     * @param DI $container
+     */
+    public function __construct(DI $container) {
+        parent::__construct($container);
+        $this->dbAdaptersFactory = new AdaptersFactory($this->config->database->toArray());
+    }
 
     /**
      * Register services
      */
     public function register() {
         $this->container->set('db', function() {
-            return new Mysql($this->config->database->toArray());
+            return $this->dbAdaptersFactory->getAdapter($this->config->database->adapter);
         });
     }
 }

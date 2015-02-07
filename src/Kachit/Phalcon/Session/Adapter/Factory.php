@@ -1,19 +1,28 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Kachit
- * Date: 06.02.2015
- * Time: 3:14
+ * Session adapters factory
+ *
+ * @author Kachit
+ * @package Kachit\Phalcon\Session\Adapter
  */
-namespace Kachit\Phalcon\Session;
+namespace Kachit\Phalcon\Session\Adapter;
 
 use Kachit\Phalcon\Common\AbstractFactory;
+use Phalcon\Session\Adapter;
 
 class Factory extends AbstractFactory {
     /**
      * @return string
      */
     protected function getNamespace() {
-        // TODO: Implement getNamespace() method.
+        return 'Phalcon\Session\Adapter';
+    }
+
+    /**
+     * @param $name
+     * @return object
+     */
+    public function getAdapter($name) {
+        return $this->getObject($name);
     }
 }

@@ -10,7 +10,7 @@ namespace Kachit\Phalcon\ServiceProvider;
 use Phalcon\DI\FactoryDefault as DI;
 use Phalcon\Config;
 
-abstract class AbstractProvider implements  ServiceProviderInterface {
+abstract class AbstractProvider implements ServiceProviderInterface {
 
     /**
      * @var DI

@@ -3,6 +3,7 @@
  * Controller
  *
  * @author Kachit
+ * @package Kachit\Phalcon\Mvc
  */
 namespace Kachit\Phalcon\Mvc;
 

@@ -1,9 +1,9 @@
 <?php
 /**
- * Service providers factory
+ * Abstract factory
  *
  * @author Kachit
- * @package Kachit\Phalcon\ServiceProvider
+ * @package Kachit\Phalcon\Common
  */
 namespace Kachit\Phalcon\Common;
 
@@ -19,14 +19,28 @@ abstract class AbstractFactory {
     }
 
     /**
+     * Generate class name
+     *
      * @param $name
      * @return string
      */
     protected function generateClassName($name) {
-        return $this->getNamespace() . '\\' . ucfirst($name);
+        return $this->getNamespace() . '\\' . $this->filterClassName($name);
     }
 
     /**
+     * Filter class name
+     *
+     * @param string $name
+     * @return string
+     */
+    protected function filterClassName($name) {
+        return ucfirst(trim($name));
+    }
+
+    /**
+     * Get class namespace
+     *
      * @return string
      */
     abstract protected function getNamespace();

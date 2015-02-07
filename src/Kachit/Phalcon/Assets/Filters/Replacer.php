@@ -1,8 +1,9 @@
 <?php
 /**
- * Replacer
+ * Assets filter replacer
  *
  * @author Kachit
+ * @package Kachit\Phalcon\Assets\Filters
  */
 namespace Kachit\Phalcon\Assets\Filters;
 
