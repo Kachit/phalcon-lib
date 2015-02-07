@@ -17,7 +17,7 @@ class Loader extends AbstractProvider {
     public function register() {
         $this->container->set('loader', function () {
             $loader = new PhalconLoader();
-            $loader->registerNamespaces($this->config->autoload->namespaces);
+            $loader->registerNamespaces($this->config->loader->namespaces);
             $loader->register();
             return $loader;
         });
