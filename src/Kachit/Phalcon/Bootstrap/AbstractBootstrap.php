@@ -8,7 +8,7 @@
 namespace Kachit\Phalcon\Bootstrap;
 
 use Phalcon\Config;
-use Phalcon\DI\FactoryDefault as DI;
+use Phalcon\DI;
 use Phalcon\Mvc\Application;
 use Kachit\Phalcon\ServiceProvider\Factory as ProvidersFactory;
 

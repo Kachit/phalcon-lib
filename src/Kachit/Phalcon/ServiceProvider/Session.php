@@ -7,7 +7,7 @@
  */
 namespace Kachit\Phalcon\ServiceProvider;
 
-use Phalcon\DI\FactoryDefault as DI;
+use Phalcon\DI;
 use Kachit\Phalcon\Session\Adapter\Factory as AdaptersFactory;
 
 class Session extends AbstractProvider {

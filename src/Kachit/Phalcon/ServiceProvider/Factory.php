@@ -7,16 +7,21 @@
  */
 namespace Kachit\Phalcon\ServiceProvider;
 
-use Phalcon\DI\FactoryDefault as DI;
+use Phalcon\DI;
 use Kachit\Phalcon\Common\AbstractFactory;
 
 class Factory extends AbstractFactory {
 
     /**
+     * @var DI
+     */
+    protected $di;
+
+    /**
      * @param DI $di
      */
     public function __construct(DI $di) {
-        $this->container = $di;
+        $this->di = $di;
     }
 
     /**
@@ -34,7 +39,7 @@ class Factory extends AbstractFactory {
      * @return object
      */
     protected function createNewClass($className) {
-        return new $className($this->container);
+        return new $className($this->di);
     }
 
     /**
@@ -43,6 +48,4 @@ class Factory extends AbstractFactory {
     protected function getNamespace() {
         return __NAMESPACE__;
     }
-
-
 }

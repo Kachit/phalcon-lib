@@ -30,6 +30,6 @@ class FactoryTest extends \PHPUnit_Framework_TestCase {
      * @expectedExceptionMessage Class "Phalcon\Session\Adapter\Fake" is not exists
      */
     public function testGetAdapterNotFound() {
-        $result = $this->testable->getAdapter('fake');
+        $this->testable->getAdapter('fake');
     }
 }

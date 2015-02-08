@@ -108,6 +108,12 @@ class Replacer implements FilterInterface{
      */
     protected function prepareValue($value) {
         switch(gettype($value)) {
+            case 'integer':
+                $value = (int)$value;
+                break;
+            case 'double':
+                $value = (float)$value;
+                break;
             case 'string':
             default:
                 $value = "'" . $value . "'";

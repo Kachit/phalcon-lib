@@ -7,7 +7,7 @@
  */
 namespace Kachit\Phalcon\ServiceProvider;
 
-use Phalcon\DI\FactoryDefault as DI;
+use Phalcon\DI;
 use Kachit\Phalcon\Db\Adapter\Pdo\Factory as AdaptersFactory;
 
 class Database extends AbstractProvider {

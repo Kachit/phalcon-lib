@@ -8,7 +8,7 @@
 namespace Kachit\Phalcon\ServiceProvider;
 
 use Phalcon\Mvc\Router as PhalconRouter;
-use Phalcon\DI\FactoryDefault as DI;
+use Phalcon\DI;
 use Phalcon\Mvc\Router\Group as RoutesGroup;
 
 class Router extends AbstractProvider {
