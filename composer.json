@@ -2,7 +2,7 @@
     "name": "kachit/phalcon-lib",
     "require": {
         "php": ">=5.4.0",
-        "teapot/status": "1.0.*@dev",
+        "teapot/status": "dev-master",
         "phalcon/incubator": "dev-master"
     },
     "require-dev": {
