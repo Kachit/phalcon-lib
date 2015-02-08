@@ -102,7 +102,8 @@ abstract class AbstractBootstrap {
      * Register services
      */
     protected function registerServices() {
-        foreach ($this->config->services->toArray() as $service) {
+        $services = $this->getServicesList();
+        foreach ($services as $service) {
             $this->registerServiceProvider($service);
         }
     }
@@ -121,6 +122,25 @@ abstract class AbstractBootstrap {
      * Register modules
      */
     protected function registerModules() {
-        $this->application->registerModules($this->config->modules->toArray());
+        $modules = $this->getModulesList();
+        $this->application->registerModules($modules);
+    }
+
+    /**
+     * Get modules list
+     *
+     * @return array
+     */
+    protected function getModulesList() {
+        return $this->config->modules->toArray();
+    }
+
+    /**
+     * Get services list
+     *
+     * @return array
+     */
+    protected function getServicesList() {
+        return $this->config->services->toArray();
     }
 } 

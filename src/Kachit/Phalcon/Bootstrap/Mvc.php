@@ -13,7 +13,7 @@ use Phalcon\Mvc\Application;
 class Mvc extends AbstractBootstrap {
 
     /**
-     * Register container
+     * Create Ioc container
      */
     protected function createDiContainer() {
         $this->di = new DI();

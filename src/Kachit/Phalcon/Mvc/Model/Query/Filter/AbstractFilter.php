@@ -1,6 +1,6 @@
 <?php
 /**
- * AbstractConfig
+ * Query filter abstract
  *
  * @author Kachit
  */
