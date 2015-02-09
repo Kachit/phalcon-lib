@@ -4,7 +4,7 @@
  * 
  * @package Kachit\Phalcon\Http
  */
-namespace Kachit\Phalcon\Response;
+namespace Kachit\Phalcon\Http\Response;
 
 use Teapot\HttpResponse\Status\StatusCode as StatusCodeInterface;
 

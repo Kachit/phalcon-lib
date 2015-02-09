@@ -1,8 +1,9 @@
 <?php
 /**
  * Json template engine
- * 
- * @author antoxa <kornilov@realweb.ru>
+ *
+ * @author Kachit
+ * @package Kachit\Phalcon\Mvc\View\Engine
  */
 namespace Kachit\Phalcon\Mvc\View\Engine;
 
@@ -48,15 +49,5 @@ class Json extends Php {
         }
 
         $this->_view->setContent($content);
-    }
-
-    /**
-     * Load template
-     *
-     * @param string $path
-     * @return bool|mixed
-     */
-    protected function loadTemplate($path) {
-        return (is_file($path)) ? include $path : false;
     }
 }

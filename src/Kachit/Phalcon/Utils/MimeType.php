@@ -2,8 +2,8 @@
 /**
  * Class ContentType
  * 
- * @author antoxa <kornilov@realweb.ru>
- * @package Kachit\Phalcon\Http
+ * @author Kachit
+ * @package Kachit\Phalcon\Utils
  */
 namespace Kachit\Phalcon\Utils;
 
