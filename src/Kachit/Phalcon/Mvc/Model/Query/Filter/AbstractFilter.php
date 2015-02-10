@@ -11,12 +11,12 @@ abstract class AbstractFilter {
     /**
      * @var int
      */
-    protected $limit;
+    protected $limit = 0;
 
     /**
      * @var int
      */
-    protected $offset;
+    protected $offset = 0;
 
     /**
      * @var mixed

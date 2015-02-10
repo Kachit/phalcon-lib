@@ -3,10 +3,11 @@
  * AbstractRepository
  *
  * @author Kachit
+ * @package Kachit\Phalcon\Mvc\Model\Repository
  */
 namespace Kachit\Phalcon\Mvc\Model\Repository;
 
-use Kachit\Phalcon\Mvc\Model\Query\Filter\AbstractFilter;
+use Kachit\Phalcon\Mvc\Model\Query\Filter\AbstractFilter as QueryFilter;
 
 use Phalcon\DI\Injectable;
 use Phalcon\Mvc\Model\Manager;
@@ -17,82 +18,145 @@ use Phalcon\Mvc\Model\Query\Builder;
 abstract class AbstractRepository extends Injectable {
 
     /**
-     * getModelName
-     *
-     * @return string
+     * Default primary key field
      */
-    abstract public function getModelName();
+    const PRIMARY_KEY_DEFAULT_FIELD = 'id';
 
     /**
-     * @param string $alias
+     * Find by primary key
      *
-     * @return Builder
+     * @param mixed $pk
+     * @return Model
      */
-    public function createQuery($alias = null) {
-        return $this->getModelsManager()->createBuilder($alias)
-            ->addFrom($this->getModelName(), $alias);
+    public function findByPk($pk) {
+        $pkField = $this->getPrimaryKeyField();
+        return $this->createQuery()->where($pkField . ' = ' . $pk)->getQuery()->getSingleResult();
     }
 
     /**
-     * @param $id
-     * @return Model
-     */
-    public function findByPk($id) {
-        return $this->createQuery()->where('id = ' . $id)->getQuery()->getSingleResult();
-    }
-
-    /**
-     * findFirst
+     * Find first row by filter
      *
-     * @param AbstractFilter $config
+     * @param QueryFilter $filter
      * @return Model
      */
-    public function findFirst(AbstractFilter $config) {
-        $query = $this->createQueryByConfig($config);
+    public function findFirst(QueryFilter $filter = null) {
+        $filter = $this->checkQueryFilter($filter);
+        $query = $this->createQueryByFilter($filter);
         return $query->getQuery()->getSingleResult();
     }
 
     /**
-     * findAll
+     * Find all rows by filter
      *
-     * @param AbstractFilter $config
+     * @param QueryFilter $filter
      * @return Resultset
      */
-    public function findAll(AbstractFilter $config) {
-        $query = $this->createQueryByConfig($config);
-        if ($config->getLimit()) {
-            $query->limit($config->getLimit());
-        }
-        if ($config->getOffset()) {
-            $query->offset($config->getOffset());
-        }
+    public function findAll(QueryFilter $filter = null) {
+        $filter = $this->checkQueryFilter($filter);
+        $query = $this->createQueryByFilter($filter);
+        $this->filterQueryPost($query, $filter);
         return $query->getQuery()->execute();
     }
 
     /**
-     * createQueryByConfig
-     *
-     * @param AbstractFilter $config
-     * @return Builder
-     */
-    abstract protected function createQueryByConfig(AbstractFilter $config);
-
-    /**
-     * getModelEntity
+     * Get model entity
      *
      * @return Model
      */
     public function getModelEntity() {
-        $entity = $this->getModelName();
+        $entity = $this->getEntityName();
         return new $entity;
     }
 
     /**
-     * getModelsManager
+     * Get query filter
+     *
+     * @return QueryFilter
+     */
+    public function getQueryFilter() {
+        $filter = $this->getQueryFilterName();
+        return new $filter;
+    }
+
+    /**
+     * Create query by filter
+     *
+     * @param QueryFilter $filter
+     * @return Builder
+     */
+    abstract protected function createQueryByFilter(QueryFilter $filter);
+
+    /**
+     * Get entity name
+     *
+     * @return string
+     */
+    abstract protected function getEntityName();
+
+    /**
+     * Get query filter name
+     *
+     * @return string
+     */
+    abstract protected function getQueryFilterName();
+
+    /**
+     * Create query builder
+     *
+     * @param string $alias
+     * @return Builder
+     */
+    protected function createQuery($alias = null) {
+        return $this->getModelsManager()->createBuilder($alias)
+            ->addFrom($this->getEntityName(), $alias);
+    }
+
+    /**
+     * Check query filter
+     *
+     * @param QueryFilter $filter
+     * @return QueryFilter|string
+     * @throws Exception
+     */
+    protected function checkQueryFilter(QueryFilter $filter = null) {
+        $filterName = $this->getQueryFilterName();
+        if (is_object($filter) && !($filter instanceof $filterName)) {
+            $badFilterClass = get_class($filter);
+            throw new Exception('Query filter object "' . $badFilterClass . '" is not available for this repository');
+        }
+        return ($filter) ? $filter : $this->getQueryFilter();
+    }
+
+    /**
+     * Filter query post processing
+     *
+     * @param Builder $query
+     * @param QueryFilter $filter
+     */
+    protected function filterQueryPost(Builder $query, QueryFilter $filter) {
+        if ($filter->getLimit()) {
+            $query->limit($filter->getLimit());
+        }
+        if ($filter->getOffset()) {
+            $query->offset($filter->getOffset());
+        }
+    }
+
+    /**
+     * Get models manager
      *
      * @return Manager
      */
     protected function getModelsManager() {
         return $this->getDi()->get('modelsManager');
+    }
+
+    /**
+     * Get primary key field
+     *
+     * @return mixed
+     */
+    protected function getPrimaryKeyField() {
+        return self::PRIMARY_KEY_DEFAULT_FIELD;
     }
 }
