@@ -58,7 +58,9 @@ class Json {
      * @return mixed
      */
     public function decode($jsonString) {
-        return json_decode($jsonString, $this->decodeAsArray, $this->decodeDepth, $this->generateDecodeOptions());
+        $value = json_decode($jsonString, $this->decodeAsArray, $this->decodeDepth, $this->generateDecodeOptions());
+        $this->checkJsonErrors();
+        return $value;
     }
 
     /**
@@ -69,7 +71,9 @@ class Json {
      */
     public function encode($value) {
         $value = $this->prepareValueForEncode($value);
-        return json_encode($value, $this->generateEncodeOptions(), $this->encodeDepth);
+        $jsonString = json_encode($value, $this->generateEncodeOptions(), $this->encodeDepth);
+        $this->checkJsonErrors();
+        return $jsonString;
     }
 
     /**
@@ -150,7 +154,7 @@ class Json {
      *
      * @throws \Exception
      */
-    public function checkJsonErrors() {
+    protected function checkJsonErrors() {
         if (json_last_error() !== JSON_ERROR_NONE) {
             throw new \Exception(json_last_error_msg());
         }

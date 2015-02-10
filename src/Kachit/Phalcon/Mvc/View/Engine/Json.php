@@ -45,7 +45,6 @@ class Json extends Php {
      */
     public function render($path, $params, $mustClean = null) {
         $content = $this->jsonHelper->encode($params);
-        $this->jsonHelper->checkJsonErrors();
         $this->_view->setContent($content);
     }
 
