@@ -10,11 +10,22 @@ Launch web application
 
 ```php
 <?php
-$config = require 'path/to/config/file.php';
+$config = require 'path/to/config/mvc/file.php';
 $bootstrap = new Kachit\Phalcon\Bootstrap\Mvc($config);
 
 $application = $bootstrap->registerApplication();
 
 echo $application->handle()->getContent();
-?>
+```
+
+Launch console application
+
+```php
+<?php
+$config = require 'path/to/config/cli/file.php';
+$bootstrap = new Kachit\Phalcon\Bootstrap\Cli($config);
+
+$application = $bootstrap->registerApplication();
+
+$application->handle();
 ```
