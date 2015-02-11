@@ -1,6 +1,8 @@
 <?php
 /**
  * Class ReplacerTest
+ *
+ * @author Kachit
  */
 namespace Kachit\Phalcon\Tests\Assets\Filters;
 
@@ -108,7 +110,9 @@ class ReplacerTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @param $fileName
+     * Get testable filename
+     *
+     * @param string $fileName
      * @return string
      */
     protected function getTestableFile($fileName) {

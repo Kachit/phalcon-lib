@@ -1,8 +1,8 @@
 <?php
 /**
  * Class FilterTestable
- * 
- * @author antoxa <kornilov@realweb.ru>
+ *
+ * @author Kachit
  */
 namespace Kachit\Phalcon\Testable\Mvc\Model\QueryFilter;
 

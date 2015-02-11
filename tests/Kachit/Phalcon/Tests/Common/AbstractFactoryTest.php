@@ -1,6 +1,8 @@
 <?php
 /**
  * Class AbstractFactoryTest
+ *
+ * @author Kachit
  */
 namespace Kachit\Phalcon\Tests\Common;
 

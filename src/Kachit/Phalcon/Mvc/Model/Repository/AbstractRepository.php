@@ -14,6 +14,7 @@ use Phalcon\Mvc\Model\Manager;
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
 use Phalcon\Mvc\Model\Query\Builder;
+use Kachit\Phalcon\Mvc\Model\Entity\EntitiesFactory;
 
 abstract class AbstractRepository extends Injectable {
 
@@ -65,7 +66,7 @@ abstract class AbstractRepository extends Injectable {
      */
     public function getModelEntity() {
         $entity = $this->getEntityName();
-        return new $entity;
+        return $this->getEntitiesFactory()->getObject($entity);
     }
 
     /**
@@ -149,6 +150,15 @@ abstract class AbstractRepository extends Injectable {
      */
     protected function getModelsManager() {
         return $this->getDi()->get('modelsManager');
+    }
+
+    /**
+     * Get entities factory
+     *
+     * @return EntitiesFactory
+     */
+    protected function getEntitiesFactory() {
+        return new EntitiesFactory();
     }
 
     /**

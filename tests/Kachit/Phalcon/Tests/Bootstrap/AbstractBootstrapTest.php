@@ -2,6 +2,7 @@
 /**
  * Class AbstractBootstrapTest
  *
+ * @author Kachit
  * @package Kachit\Phalcon\Tests\Bootstrap
  */
 namespace Kachit\Phalcon\Tests\Bootstrap;

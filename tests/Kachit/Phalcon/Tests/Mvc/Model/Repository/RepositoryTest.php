@@ -2,7 +2,7 @@
 /**
  * Class FilterTestable
  *
- * @author antoxa <kornilov@realweb.ru>
+ * @author Kachit
  */
 namespace Kachit\Phalcon\Tests\Mvc\Model\Repository;
 

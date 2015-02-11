@@ -1,6 +1,8 @@
 <?php
 /**
  * Class FactoryTest
+ *
+ * @author Kachit
  */
 namespace Kachit\Phalcon\Tests\ServiceProvider;
 
