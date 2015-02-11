@@ -1,13 +1,13 @@
 <?php
 /**
- * Abstract factory
+ * Abstract factory static
  *
  * @author Kachit
  * @package Kachit\Phalcon\Common
  */
 namespace Kachit\Phalcon\Common;
 
-abstract class AbstractFactory {
+abstract class AbstractFactoryStatic {
 
     /**
      * Get object
@@ -15,9 +15,9 @@ abstract class AbstractFactory {
      * @param $name
      * @return object
      */
-    public function getObject($name) {
-        $className = $this->generateClassName($name);
-        return $this->loadClass($className);
+    public static function getObject($name) {
+        $className = static::generateClassName($name);
+        return static::loadClass($className);
     }
 
     /**
@@ -26,8 +26,8 @@ abstract class AbstractFactory {
      * @param $name
      * @return string
      */
-    protected function generateClassName($name) {
-        return $this->getNamespace() . '\\' . $this->filterClassName($name);
+    protected static function generateClassName($name) {
+        return static::getNamespace() . '\\' . static::filterClassName($name);
     }
 
     /**
@@ -36,7 +36,7 @@ abstract class AbstractFactory {
      * @param string $name
      * @return string
      */
-    protected function filterClassName($name) {
+    protected static function filterClassName($name) {
         return ucfirst(trim($name));
     }
 
@@ -45,7 +45,9 @@ abstract class AbstractFactory {
      *
      * @return string
      */
-    abstract protected function getNamespace();
+    protected static function getNamespace() {
+        return __NAMESPACE__;
+    }
 
     /**
      * Load class
@@ -53,11 +55,11 @@ abstract class AbstractFactory {
      * @param $className
      * @return mixed
      */
-    protected function loadClass($className) {
-        if (!$this->checkClassExists($className)) {
-            $this->handleError($this->getErrorMessageClassNotExists($className));
+    protected static function loadClass($className) {
+        if (!static::checkClassExists($className)) {
+            static::handleError(static::getErrorMessageClassNotExists($className));
         }
-        return $this->createNewClass($className);
+        return static::createNewClass($className);
     }
 
     /**
@@ -66,7 +68,7 @@ abstract class AbstractFactory {
      * @param string $className
      * @return object
      */
-    protected function createNewClass($className) {
+    protected static function createNewClass($className) {
         return new $className();
     }
 
@@ -76,7 +78,7 @@ abstract class AbstractFactory {
      * @param string $className
      * @return bool
      */
-    protected function checkClassExists($className) {
+    protected static function checkClassExists($className) {
         return class_exists($className);
     }
 
@@ -86,7 +88,7 @@ abstract class AbstractFactory {
      * @param string $message
      * @throws \Exception
      */
-    protected function handleError($message) {
+    protected static function handleError($message) {
         throw new \Exception($message);
     }
 
@@ -96,7 +98,7 @@ abstract class AbstractFactory {
      * @param string $className
      * @return string
      */
-    protected function getErrorMessageClassNotExists($className) {
+    protected static function getErrorMessageClassNotExists($className) {
         return 'Class "' . $className . '" is not exists';
     }
 }

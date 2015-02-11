@@ -5,8 +5,10 @@ phalcon-lib
 [![License](https://poser.pugx.org/leaphly/cart-bundle/license.svg)](https://packagist.org/packages/leaphly/cart-bundle)
 
 My Phalcon library
+===========
 
 Launch web application
+===========
 
 ```php
 <?php
@@ -19,6 +21,7 @@ echo $application->handle()->getContent();
 ```
 
 Launch console application
+===========
 
 ```php
 <?php

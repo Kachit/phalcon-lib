@@ -8,6 +8,9 @@ namespace Kachit\Phalcon\Mvc\Model\Query\Filter;
 
 abstract class AbstractFilter {
 
+    const ORDER_BY_ASC = 'asc';
+    const ORDER_BY_DESC = 'desc';
+
     /**
      * @var int
      */
@@ -22,6 +25,11 @@ abstract class AbstractFilter {
      * @var mixed
      */
     protected $groupBy;
+
+    /**
+     * @var mixed
+     */
+    protected $orderBy;
 
     /**
      * Get Limit
