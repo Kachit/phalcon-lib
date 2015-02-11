@@ -5,3 +5,16 @@ phalcon-lib
 [![License](https://poser.pugx.org/leaphly/cart-bundle/license.svg)](https://packagist.org/packages/leaphly/cart-bundle)
 
 My Phalcon library
+
+Launch web application
+
+```php
+<?php
+$config = require 'path/to/config/file.php';
+$bootstrap = new Kachit\Phalcon\Bootstrap\Mvc($config);
+
+$application = $bootstrap->registerApplication();
+
+echo $application->handle()->getContent();
+?>
+```
