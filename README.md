@@ -1,13 +1,10 @@
-phalcon-lib
+My Phalcon library
 ===========
 [![Coverage Status](https://coveralls.io/repos/Kachit/phalcon-lib/badge.svg)](https://coveralls.io/r/Kachit/phalcon-lib)
 [![Build Status](https://travis-ci.org/Kachit/phalcon-lib.svg?branch=master)](https://travis-ci.org/Kachit/phalcon-lib)
 [![Total Downloads](https://poser.pugx.org/kachit/phalcon-lib/downloads.svg)](https://packagist.org/packages/kachit/phalcon-lib)
 [![Latest Stable Version](https://poser.pugx.org/kachit/phalcon-lib/v/stable.svg)](https://packagist.org/packages/kachit/phalcon-lib)
 [![License](https://poser.pugx.org/leaphly/cart-bundle/license.svg)](https://packagist.org/packages/leaphly/cart-bundle)
-
-My Phalcon library
-===========
 
 Launch web application
 ------------------------
