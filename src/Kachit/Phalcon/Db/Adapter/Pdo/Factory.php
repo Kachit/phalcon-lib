@@ -7,7 +7,7 @@
  */
 namespace Kachit\Phalcon\Db\Adapter\Pdo;
 
-use Kachit\Phalcon\Common\AbstractFactory;
+use Kachit\Phalcon\Common\Factory\AbstractFactory;
 use Phalcon\Db\Adapter\Pdo;
 
 class Factory extends AbstractFactory {
@@ -15,22 +15,17 @@ class Factory extends AbstractFactory {
     /**
      * @var array pdo connection params
      */
-    protected $params = [];
-
-    /**
-     * @param array $params
-     */
-    public function __construct(array $params) {
-        $this->params = $params;
-    }
+    protected $options = [];
 
     /**
      * Get adapter
      *
      * @param string $name
-     * @return Pdo
+     * @param array $options
+     * @return object
      */
-    public function getAdapter($name) {
+    public function getAdapter($name, array $options) {
+        $this->options = $options;
         return $this->getObject($name);
     }
     /**
@@ -49,6 +44,6 @@ class Factory extends AbstractFactory {
      * @return object
      */
     protected function createNewClass($className) {
-        return new $className($this->params);
+        return new $className($this->options);
     }
 }

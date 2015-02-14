@@ -1,22 +1,21 @@
 <?php
 /**
- * Class AbstractService
+ * Abstract service layer
  * 
- * @author antoxa <kornilov@realweb.ru>
+ * @author Kachit
  */
 namespace Kachit\Phalcon\Mvc\Model\Service;
 
-use Phalcon\DI\Injectable;
-use Kachit\Phalcon\Mvc\Model\Repository\AbstractRepository;
-
 use Phalcon\Cache\BackendInterface;
-use Phalcon\Cache\FrontendInterface;
 use Phalcon\Config;
+use Phalcon\DI\Injectable;
+
+use Kachit\Phalcon\Mvc\Model\Repository\RepositoryInterface;
 
 abstract class AbstractService extends Injectable {
 
     /**
-     * @var AbstractRepository
+     * @var RepositoryInterface
      */
     protected $repository;
 
@@ -41,7 +40,7 @@ abstract class AbstractService extends Injectable {
     /**
      * Get repository
      *
-     * @return AbstractRepository
+     * @return RepositoryInterface
      */
     abstract protected function getRepository();
 }

@@ -8,7 +8,7 @@
 namespace Kachit\Phalcon\ServiceProvider;
 
 use Phalcon\DI;
-use Kachit\Phalcon\Common\AbstractFactory;
+use Kachit\Phalcon\Common\Factory\AbstractFactory;
 
 class Factory extends AbstractFactory {
 

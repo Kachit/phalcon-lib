@@ -5,7 +5,7 @@
  * @author Kachit
  * @package Kachit\Phalcon\Common
  */
-namespace Kachit\Phalcon\Common;
+namespace Kachit\Phalcon\Common\Factory;
 
 abstract class AbstractFactory {
 

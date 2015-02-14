@@ -4,9 +4,9 @@
  *
  * @author Kachit
  */
-namespace Kachit\Phalcon\Tests\Common;
+namespace Kachit\Phalcon\Tests\Common\Factory;
 
-use Kachit\Phalcon\Testable\Common\AbstractFactoryStaticTestable as Testable;
+use Kachit\Phalcon\Testable\Common\Factory\AbstractFactoryStaticTestable as Testable;
 
 class AbstractFactoryStaticTest extends \PHPUnit_Framework_TestCase {
 

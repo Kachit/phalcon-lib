@@ -2,18 +2,18 @@
 /**
  * Class AbstractFactoryTestable
  */
-namespace Kachit\Phalcon\Testable\Common;
+namespace Kachit\Phalcon\Testable\Common\Factory;
 
-use Kachit\Phalcon\Common\AbstractFactoryStatic;
+use Kachit\Phalcon\Common\Factory\AbstractFactory;
 
-class AbstractFactoryStaticTestable extends AbstractFactoryStatic {
+class AbstractFactoryTestable extends AbstractFactory {
 
     /**
      * Get class namespace
      *
      * @return string
      */
-    protected static function getNamespace() {
+    protected function getNamespace() {
         return 'Foo';
     }
 
@@ -23,7 +23,7 @@ class AbstractFactoryStaticTestable extends AbstractFactoryStatic {
      * @param $name
      * @return string
      */
-    public static function generateClassName($name) {
+    public function generateClassName($name) {
         return parent::generateClassName($name);
     }
 
@@ -33,7 +33,7 @@ class AbstractFactoryStaticTestable extends AbstractFactoryStatic {
      * @param string $name
      * @return string
      */
-    public static function filterClassName($name) {
+    public function filterClassName($name) {
         return parent::filterClassName($name);
     }
 
@@ -43,7 +43,7 @@ class AbstractFactoryStaticTestable extends AbstractFactoryStatic {
      * @param string $className
      * @return object
      */
-    public static function createNewClass($className) {
+    public function createNewClass($className) {
         return parent::createNewClass($className);
     }
 
@@ -53,7 +53,7 @@ class AbstractFactoryStaticTestable extends AbstractFactoryStatic {
      * @param string $className
      * @return bool
      */
-    public static function checkClassExists($className) {
+    public function checkClassExists($className) {
         return parent::checkClassExists($className);
     }
 }

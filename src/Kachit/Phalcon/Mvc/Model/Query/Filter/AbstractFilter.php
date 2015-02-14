@@ -6,7 +6,11 @@
  */
 namespace Kachit\Phalcon\Mvc\Model\Query\Filter;
 
-abstract class AbstractFilter {
+use Kachit\Phalcon\Utils\Helper\ObjectConverterTrait;
+
+abstract class AbstractFilter implements FilterInterface {
+
+    use ObjectConverterTrait;
 
     const ORDER_BY_ASC = 'asc';
     const ORDER_BY_DESC = 'desc';
@@ -24,12 +28,12 @@ abstract class AbstractFilter {
     /**
      * @var mixed
      */
-    protected $groupBy;
+    protected $groupBy = [];
 
     /**
      * @var mixed
      */
-    protected $orderBy;
+    protected $orderBy = [];
 
     /**
      * Get Limit
@@ -68,6 +72,46 @@ abstract class AbstractFilter {
      */
     public function setOffset($offset) {
         $this->offset = $offset;
+        return $this;
+    }
+
+    /**
+     * Get group by
+     *
+     * @return array
+     */
+    public function getGroupBy() {
+        return $this->groupBy;
+    }
+
+    /**
+     * Set group by
+     *
+     * @param array $groupBy
+     * @return $this;
+     */
+    public function setGroupBy(array $groupBy) {
+        $this->groupBy = $groupBy;
+        return $this;
+    }
+
+    /**
+     * Get order by
+     *
+     * @return array
+     */
+    public function getOrderBy() {
+        return $this->orderBy;
+    }
+
+    /**
+     * Set order by
+     *
+     * @param array $orderBy
+     * @return $this;
+     */
+    public function setOrderBy(array $orderBy) {
+        $this->orderBy = $orderBy;
         return $this;
     }
 }

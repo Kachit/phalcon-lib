@@ -25,6 +25,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase {
     public function testGetAdapterFiles() {
         $result = $this->testable->getAdapter('files');
         $this->assertInstanceOf('Phalcon\Session\Adapter\Files', $result);
+        $this->assertInstanceOf('Phalcon\Session\Adapter', $result);
     }
 
     /**

@@ -8,6 +8,8 @@
 namespace Kachit\Phalcon\ServiceProvider;
 
 use Phalcon\DI;
+use Phalcon\Config;
+
 use Kachit\Phalcon\Db\Adapter\Pdo\Factory as AdaptersFactory;
 
 class Database extends AbstractProvider {
@@ -22,7 +24,7 @@ class Database extends AbstractProvider {
      */
     public function __construct(DI $container) {
         parent::__construct($container);
-        $this->dbAdaptersFactory = new AdaptersFactory($this->config->database->toArray());
+        $this->dbAdaptersFactory = new AdaptersFactory();
     }
 
     /**
@@ -30,7 +32,9 @@ class Database extends AbstractProvider {
      */
     public function register() {
         $this->container->set('db', function() {
-            return $this->dbAdaptersFactory->getAdapter($this->config->database->adapter);
+            /* @var Config $dbConfig */
+            $dbConfig = $this->config->database;
+            return $this->dbAdaptersFactory->getAdapter($dbConfig->adapter, $dbConfig->toArray());
         });
     }
 }

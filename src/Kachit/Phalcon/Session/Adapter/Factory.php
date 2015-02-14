@@ -7,7 +7,7 @@
  */
 namespace Kachit\Phalcon\Session\Adapter;
 
-use Kachit\Phalcon\Common\AbstractFactory;
+use Kachit\Phalcon\Common\Factory\AbstractFactory;
 use Phalcon\Session\Adapter;
 
 class Factory extends AbstractFactory {
@@ -19,8 +19,10 @@ class Factory extends AbstractFactory {
     }
 
     /**
-     * @param $name
-     * @return object
+     * Get adapter
+     *
+     * @param string $name
+     * @return Adapter
      */
     public function getAdapter($name) {
         return $this->getObject($name);

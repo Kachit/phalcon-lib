@@ -7,7 +7,7 @@
  */
 namespace Kachit\Phalcon\Mvc\Model\Entity;
 
-use Kachit\Phalcon\Common\AbstractFactory;
+use Kachit\Phalcon\Common\Factory\AbstractFactory;
 use Phalcon\Mvc\Model;
 
 class EntitiesFactory extends AbstractFactory {
