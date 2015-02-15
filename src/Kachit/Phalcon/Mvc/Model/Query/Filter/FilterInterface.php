@@ -11,7 +11,7 @@ interface FilterInterface {
      * Fill from array
      *
      * @param array $params
-     * @return FilterInterface
+     * @return $this;
      */
     public function fillFromArray(array $params);
 

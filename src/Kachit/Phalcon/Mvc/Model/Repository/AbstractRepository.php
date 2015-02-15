@@ -7,16 +7,17 @@
  */
 namespace Kachit\Phalcon\Mvc\Model\Repository;
 
-use Kachit\Phalcon\Mvc\Model\Query\Filter\AbstractFilter as QueryFilter;
+use Kachit\Phalcon\Mvc\Model\Query\Filter\FilterInterface as QueryFilter;
+use Kachit\Phalcon\Mvc\Model\Entity\EntitiesFactory;
+use Kachit\Phalcon\Mvc\Model\Query\Filter\FiltersFactory;
 
 use Phalcon\DI\Injectable;
 use Phalcon\Mvc\Model\Manager;
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
 use Phalcon\Mvc\Model\Query\Builder;
-use Kachit\Phalcon\Mvc\Model\Entity\EntitiesFactory;
 
-abstract class AbstractRepository extends Injectable {
+abstract class AbstractRepository extends Injectable implements RepositoryInterface {
 
     /**
      * Default primary key field
@@ -76,7 +77,7 @@ abstract class AbstractRepository extends Injectable {
      */
     public function getQueryFilter() {
         $filter = $this->getQueryFilterName();
-        return new $filter;
+        return $this->getFiltersFactory()->getObject($filter);
     }
 
     /**
@@ -116,7 +117,7 @@ abstract class AbstractRepository extends Injectable {
      * Check query filter
      *
      * @param QueryFilter $filter
-     * @return QueryFilter|string
+     * @return QueryFilter
      * @throws Exception
      */
     protected function checkQueryFilter(QueryFilter $filter = null) {
@@ -141,6 +142,12 @@ abstract class AbstractRepository extends Injectable {
         if ($filter->getOffset()) {
             $query->offset($filter->getOffset());
         }
+        if ($filter->getGroupBy()) {
+            $query->groupBy($filter->getGroupBy());
+        }
+        if ($filter->getOrderBy()) {
+            $query->orderBy($filter->getOrderBy());
+        }
     }
 
     /**
@@ -159,6 +166,15 @@ abstract class AbstractRepository extends Injectable {
      */
     protected function getEntitiesFactory() {
         return new EntitiesFactory();
+    }
+
+    /**
+     * Get filters factory
+     *
+     * @return FiltersFactory
+     */
+    protected function getFiltersFactory() {
+        return new FiltersFactory();
     }
 
     /**

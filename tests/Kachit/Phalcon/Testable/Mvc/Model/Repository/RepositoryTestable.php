@@ -6,11 +6,12 @@
  */
 namespace Kachit\Phalcon\Testable\Mvc\Model\Repository;
 
-use Kachit\Phalcon\Mvc\Model\Query\Filter\AbstractFilter as QueryFilter;
+use Kachit\Phalcon\Mvc\Model\Query\Filter\FilterInterface as QueryFilter;
 use Kachit\Phalcon\Testable\Mvc\Model\QueryFilter\FilterTestable;
-
 use Kachit\Phalcon\Mvc\Model\Repository\AbstractRepository;
 use Kachit\Phalcon\Mvc\Model\Repository\Exception;
+use Kachit\Phalcon\Mvc\Model\Entity\EntitiesFactory;
+use Kachit\Phalcon\Mvc\Model\Query\Filter\FiltersFactory;
 
 use Phalcon\Mvc\Model\Query\Builder;
 use Phalcon\Mvc\Model\Manager;
@@ -87,5 +88,23 @@ class RepositoryTestable extends AbstractRepository {
      */
     public function getModelsManager() {
         return parent::getModelsManager();
+    }
+
+    /**
+     * Get entities factory
+     *
+     * @return EntitiesFactory
+     */
+    public function getEntitiesFactory() {
+        return parent::getEntitiesFactory();
+    }
+
+    /**
+     * Get filters factory
+     *
+     * @return FiltersFactory
+     */
+    public function getFiltersFactory() {
+        return parent::getFiltersFactory();
     }
 }

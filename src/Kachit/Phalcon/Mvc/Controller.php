@@ -8,6 +8,7 @@
 namespace Kachit\Phalcon\Mvc;
 
 use Phalcon\Mvc\Controller as PhalconController;
+
 use Kachit\Phalcon\Http\Response\StatusCode;
 
 class Controller extends PhalconController {

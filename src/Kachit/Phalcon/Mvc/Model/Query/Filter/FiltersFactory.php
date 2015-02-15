@@ -1,22 +1,20 @@
 <?php
 /**
- * Entities factory
+ * Class FiltersFactory
  *
- * @author Kachit
- * @package Kachit\Phalcon\Mvc\Model\Entity
+ * @package Kachit\Phalcon\Mvc\Model\Query\Filter
  */
-namespace Kachit\Phalcon\Mvc\Model\Entity;
+namespace Kachit\Phalcon\Mvc\Model\Query\Filter;
 
 use Kachit\Phalcon\Common\Factory\AbstractFactory;
-use Phalcon\Mvc\Model;
 
-class EntitiesFactory extends AbstractFactory {
+class FiltersFactory extends AbstractFactory {
 
     /**
      * Get object by class name
      *
-     * @param string $className
-     * @return Model
+     * @param $className
+     * @return FilterInterface
      */
     public function getObject($className) {
         return $this->loadClass($className);

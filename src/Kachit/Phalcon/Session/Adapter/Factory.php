@@ -8,6 +8,7 @@
 namespace Kachit\Phalcon\Session\Adapter;
 
 use Kachit\Phalcon\Common\Factory\AbstractFactory;
+
 use Phalcon\Session\Adapter;
 
 class Factory extends AbstractFactory {

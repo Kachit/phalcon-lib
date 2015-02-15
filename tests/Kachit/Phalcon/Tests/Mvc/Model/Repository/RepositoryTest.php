@@ -115,4 +115,14 @@ class RepositoryTest extends \PHPUnit_Framework_TestCase {
     public function testCheckQueryFilterNotValid() {
         $this->testable->checkQueryFilter(new FilterTestableInvalid());
     }
+
+    public function testGetEntitiesFactory() {
+        $result = $this->testable->getEntitiesFactory();
+        $this->assertInstanceOf('Kachit\Phalcon\Mvc\Model\Entity\EntitiesFactory', $result);
+    }
+
+    public function testGetFiltersFactory() {
+        $result = $this->testable->getFiltersFactory();
+        $this->assertInstanceOf('Kachit\Phalcon\Mvc\Model\Query\Filter\FiltersFactory', $result);
+    }
 }
