@@ -6,11 +6,13 @@
  */
 namespace Kachit\Phalcon\Mvc\Model\Service;
 
-use Phalcon\Cache\BackendInterface;
 use Phalcon\Config;
 use Phalcon\DI\Injectable;
+use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
+use Phalcon\Mvc\Model;
 
 use Kachit\Phalcon\Mvc\Model\Repository\RepositoryInterface;
+use Kachit\Phalcon\Mvc\Model\Query\Filter\FilterInterface;
 
 abstract class AbstractService extends Injectable {
 
@@ -18,11 +20,6 @@ abstract class AbstractService extends Injectable {
      * @var RepositoryInterface
      */
     protected $repository;
-
-    /**
-     * @var BackendInterface
-     */
-    protected $cache;
 
     /**
      * @var Config
@@ -35,6 +32,26 @@ abstract class AbstractService extends Injectable {
     public function __construct() {
         $this->repository = $this->getRepository();
         $this->config = $this->getDI()->get('config');
+    }
+
+    /**
+     * findById
+     *
+     * @param int $id
+     * @return Model
+     */
+    public function findById($id) {
+        return $this->repository->findByPk($id);
+    }
+
+    /**
+     * findAll
+     *
+     * @param FilterInterface $filter
+     * @return Resultset
+     */
+    public function findAll(FilterInterface $filter = null) {
+        return $this->repository->findAll($filter);
     }
 
     /**
