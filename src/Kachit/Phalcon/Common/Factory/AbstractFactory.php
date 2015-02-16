@@ -12,7 +12,7 @@ abstract class AbstractFactory {
     /**
      * Get object
      *
-     * @param $name
+     * @param string $name
      * @return object
      */
     public function getObject($name) {
@@ -23,11 +23,13 @@ abstract class AbstractFactory {
     /**
      * Generate class name
      *
-     * @param $name
+     * @param string $name
+     * @param string $namespace
      * @return string
      */
-    protected function generateClassName($name) {
-        return $this->getNamespace() . '\\' . $this->filterClassName($name);
+    protected function generateClassName($name, $namespace = null) {
+        $namespace = ($namespace) ? $namespace : $this->getNamespace();
+        return $namespace . '\\' . $this->filterClassName($name);
     }
 
     /**
@@ -50,8 +52,8 @@ abstract class AbstractFactory {
     /**
      * Load class
      *
-     * @param $className
-     * @return mixed
+     * @param string $className
+     * @return object
      */
     protected function loadClass($className) {
         if (!$this->checkClassExists($className)) {
