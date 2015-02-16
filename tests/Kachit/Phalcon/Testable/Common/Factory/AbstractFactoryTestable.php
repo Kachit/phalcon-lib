@@ -20,11 +20,12 @@ class AbstractFactoryTestable extends AbstractFactory {
     /**
      * Generate class name
      *
-     * @param $name
+     * @param string $name
+     * @param string $namespace
      * @return string
      */
-    public function generateClassName($name) {
-        return parent::generateClassName($name);
+    public function generateClassName($name, $namespace = null) {
+        return parent::generateClassName($name, $namespace);
     }
 
     /**

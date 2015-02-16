@@ -58,12 +58,4 @@ class LoaderTest extends \PHPUnit_Framework_TestCase {
     public function testGetAdapterFake() {
         $this->testable->load('config.fake');
     }
-
-    /**
-     * @expectedException \Exception
-     * @expectedExceptionMessage Phalcon\Config\Adapter\Json::__construct(config.json): failed to open stream: No such file or directory
-     */
-    public function testGetAdapterInvalidFilePath() {
-        $this->testable->load('config.json');
-    }
 }
