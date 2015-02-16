@@ -10,14 +10,16 @@ namespace Kachit\Phalcon\Mvc\Model\Repository;
 use Kachit\Phalcon\Mvc\Model\Query\Filter\FilterInterface as QueryFilter;
 use Kachit\Phalcon\Mvc\Model\Entity\EntitiesFactory;
 use Kachit\Phalcon\Mvc\Model\Query\Filter\FiltersFactory;
+use Kachit\Phalcon\DI\InjectableTrait;
 
-use Phalcon\DI\Injectable;
 use Phalcon\Mvc\Model\Manager;
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
 use Phalcon\Mvc\Model\Query\Builder;
 
-abstract class AbstractRepository extends Injectable implements RepositoryInterface {
+abstract class AbstractRepository implements RepositoryInterface {
+
+    use InjectableTrait;
 
     /**
      * Default primary key field

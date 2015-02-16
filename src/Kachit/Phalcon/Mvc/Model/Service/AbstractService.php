@@ -7,14 +7,16 @@
 namespace Kachit\Phalcon\Mvc\Model\Service;
 
 use Phalcon\Config;
-use Phalcon\DI\Injectable;
 use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
 use Phalcon\Mvc\Model;
 
 use Kachit\Phalcon\Mvc\Model\Repository\RepositoryInterface;
 use Kachit\Phalcon\Mvc\Model\Query\Filter\FilterInterface;
+use Kachit\Phalcon\DI\InjectableTrait;
 
-abstract class AbstractService extends Injectable {
+abstract class AbstractService {
+
+    use InjectableTrait;
 
     /**
      * @var RepositoryInterface

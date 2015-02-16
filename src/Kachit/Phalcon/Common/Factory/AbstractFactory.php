@@ -59,16 +59,16 @@ abstract class AbstractFactory {
         if (!$this->checkClassExists($className)) {
             $this->handleError($this->getErrorMessageClassNotExists($className));
         }
-        return $this->createNewClass($className);
+        return $this->createObject($className);
     }
 
     /**
-     * Create new class
+     * Create object
      *
      * @param string $className
      * @return object
      */
-    protected function createNewClass($className) {
+    protected function createObject($className) {
         return new $className();
     }
 

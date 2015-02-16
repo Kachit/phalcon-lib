@@ -42,7 +42,7 @@ class Factory extends AbstractFactory {
      * @param string $className
      * @return BackendInterface
      */
-    protected function createNewClass($className) {
+    protected function createObject($className) {
         return new $className($this->frontendAdapter, $this->options);
     }
 

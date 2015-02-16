@@ -56,7 +56,7 @@ class Router extends AbstractProvider {
     /**
      * Get routes file
      *
-     * @param $path
+     * @param string $path
      * @return array
      */
     protected function getRoutesFile($path) {
@@ -64,6 +64,8 @@ class Router extends AbstractProvider {
     }
 
     /**
+     * Register routes group
+     *
      * @param array $groupParams
      * @return RoutesGroup
      */
@@ -106,9 +108,9 @@ class Router extends AbstractProvider {
     /**
      * Register single routes for module
      *
-     * @param $params
+     * @param array $params
      */
-    protected function registerModuleRoutes($params) {
+    protected function registerModuleRoutes(array $params) {
         if (!isset($params['routes'])) {
             return;
         }
@@ -120,9 +122,9 @@ class Router extends AbstractProvider {
     /**
      * Register group of routes for module
      *
-     * @param $params
+     * @param array $params
      */
-    protected function registerModuleRouteGroups($params) {
+    protected function registerModuleRouteGroups(array $params) {
         if (!isset($params['groups'])) {
             return;
         }

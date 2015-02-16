@@ -47,7 +47,7 @@ abstract class AbstractFactoryCascade extends AbstractFactory {
         if (!$this->checkClassExists($className)) {
             return false;
         }
-        return $this->createNewClass($className);
+        return $this->createObject($className);
     }
 
     /**

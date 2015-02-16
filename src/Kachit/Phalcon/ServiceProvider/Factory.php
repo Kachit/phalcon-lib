@@ -39,7 +39,7 @@ class Factory extends AbstractFactory {
      * @param string $className
      * @return object
      */
-    protected function createNewClass($className) {
+    protected function createObject($className) {
         return new $className($this->di);
     }
 

@@ -35,7 +35,7 @@ class Factory extends AbstractFactory {
      * @param string $className
      * @return Config
      */
-    protected function createNewClass($className) {
+    protected function createObject($className) {
         return new $className($this->filePath);
     }
 

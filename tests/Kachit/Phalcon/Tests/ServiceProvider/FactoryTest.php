@@ -7,6 +7,7 @@
 namespace Kachit\Phalcon\Tests\ServiceProvider;
 
 use Kachit\Phalcon\ServiceProvider\Factory;
+
 use Phalcon\DI\FactoryDefault as DI;
 use Phalcon\Config;
 

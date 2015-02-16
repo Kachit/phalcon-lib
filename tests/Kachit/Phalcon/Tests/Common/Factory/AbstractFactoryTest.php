@@ -37,9 +37,22 @@ class AbstractFactoryTest extends \PHPUnit_Framework_TestCase {
         $this->assertFalse($result);
     }
 
-    public function testCreateNewClass() {
-        $result = $this->testable->createNewClass('Phalcon\Mvc\Application');
+    public function testCreateObject() {
+        $result = $this->testable->createObject('Phalcon\Mvc\Application');
         $this->assertInstanceOf('Phalcon\Mvc\Application', $result);
+    }
+
+    public function testLoadClassValid() {
+        $result = $this->testable->loadClass('Phalcon\Mvc\Application');
+        $this->assertInstanceOf('Phalcon\Mvc\Application', $result);
+    }
+
+    /**
+     * @expectedException \Exception
+     * @expectedExceptionMessage Class "Phalcon\Mvc\Foo" is not exists
+     */
+    public function testLoadClassInValid() {
+        $this->testable->loadClass('Phalcon\Mvc\Foo');
     }
 
     public function testGenerateClassName() {

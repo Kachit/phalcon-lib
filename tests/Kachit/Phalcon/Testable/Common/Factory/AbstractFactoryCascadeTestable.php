@@ -51,4 +51,14 @@ class AbstractFactoryCascadeTestable extends AbstractFactoryCascade {
         $this->namespaces = $namespaces;
         return $this;
     }
+
+    /**
+     * Load class
+     *
+     * @param string $className
+     * @return object
+     */
+    public function loadClass($className) {
+        return parent::loadClass($className);
+    }
 }

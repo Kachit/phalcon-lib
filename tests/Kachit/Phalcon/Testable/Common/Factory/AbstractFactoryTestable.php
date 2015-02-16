@@ -44,8 +44,8 @@ class AbstractFactoryTestable extends AbstractFactory {
      * @param string $className
      * @return object
      */
-    public function createNewClass($className) {
-        return parent::createNewClass($className);
+    public function createObject($className) {
+        return parent::createObject($className);
     }
 
     /**
@@ -56,5 +56,15 @@ class AbstractFactoryTestable extends AbstractFactory {
      */
     public function checkClassExists($className) {
         return parent::checkClassExists($className);
+    }
+
+    /**
+     * Load class
+     *
+     * @param string $className
+     * @return object
+     */
+    public function loadClass($className) {
+        return parent::loadClass($className);
     }
 }
