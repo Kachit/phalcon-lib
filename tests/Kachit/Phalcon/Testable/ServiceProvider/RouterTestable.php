@@ -55,7 +55,7 @@ class RouterTestable extends Router {
      *
      * @param $params
      */
-    public function registerModuleRoutes($params) {
+    public function registerModuleRoutes(array $params) {
         parent::registerModuleRoutes($params);
     }
 
@@ -64,7 +64,7 @@ class RouterTestable extends Router {
      *
      * @param $params
      */
-    public function registerModuleRouteGroups($params) {
+    public function registerModuleRouteGroups(array $params) {
         parent::registerModuleRouteGroups($params);
     }
 }
