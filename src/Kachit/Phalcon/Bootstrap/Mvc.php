@@ -23,6 +23,6 @@ class Mvc extends AbstractBootstrap {
      * Create application
      */
     protected function createApplication() {
-        $this->application = new Application($this->di);
+        $this->application = new Application();
     }
 }

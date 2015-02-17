@@ -4,14 +4,14 @@
  *
  * @author Kachit
  */
-namespace Kachit\Phalcon\Mvc;
+namespace Kachit\Phalcon\Hmvc;
 
 use Phalcon\DI\Injectable;
 use Phalcon\Config;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Http\ResponseInterface;
 
-class Hmvc extends Injectable {
+class Request extends Injectable {
 
     /**
      * Does a HMVC request in the application
@@ -19,7 +19,7 @@ class Hmvc extends Injectable {
      * @param array $location
      * @return mixed
      */
-    public function request(array $location) {
+    public function get(array $location) {
         $dispatcher = $this->getDispatcher();
         $config = $this->getConfig();
 
