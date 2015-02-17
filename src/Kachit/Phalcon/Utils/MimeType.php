@@ -18,6 +18,7 @@ class MimeType {
     const JSON = 'application/json';
     const CSS = 'text/css';
     const JS = 'application/javascript';
+    const XML = 'application/xml';
 
     /**
      * @var array
@@ -28,10 +29,10 @@ class MimeType {
         'htm' => self::HTML,
         'html' => self::HTML,
         'php' => self::HTML,
-        'css' => 'text/css',
-        'js' => 'application/javascript',
+        'css' => self::CSS,
+        'js' => self::JS,
         'json' => self::JSON,
-        'xml' => 'application/xml',
+        'xml' => self::XML,
         'swf' => 'application/x-shockwave-flash',
         'flv' => 'video/x-flv',
         // Images

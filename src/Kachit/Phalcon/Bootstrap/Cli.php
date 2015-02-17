@@ -23,6 +23,6 @@ class Cli extends AbstractBootstrap {
      * Create application
      */
     protected function createApplication() {
-        $this->application = new Console($this->di);
+        $this->application = new Console();
     }
 }
