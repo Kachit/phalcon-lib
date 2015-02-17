@@ -74,7 +74,7 @@ abstract class AbstractModule implements ModuleDefinitionInterface {
      * @return Loader
      */
     protected function getLoader() {
-        return $this->getDi()->get('loader');
+        return new Loader();
     }
 
     /**
