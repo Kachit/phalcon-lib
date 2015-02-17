@@ -19,6 +19,8 @@ class Factory extends AbstractFactory {
     protected $di;
 
     /**
+     * Init
+     *
      * @param DI $di
      */
     public function __construct(DI $di) {
@@ -26,7 +28,9 @@ class Factory extends AbstractFactory {
     }
 
     /**
-     * @param $name
+     * Get provider
+     *
+     * @param string $name
      * @return ServiceProviderInterface
      */
     public function getProvider($name) {
@@ -34,7 +38,7 @@ class Factory extends AbstractFactory {
     }
 
     /**
-     * Create new class
+     * Create object
      *
      * @param string $className
      * @return object
@@ -44,6 +48,8 @@ class Factory extends AbstractFactory {
     }
 
     /**
+     * Get namespace
+     *
      * @return string
      */
     protected function getNamespace() {

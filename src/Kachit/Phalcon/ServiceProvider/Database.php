@@ -35,6 +35,6 @@ class Database extends AbstractProvider {
             /* @var Config $dbConfig */
             $dbConfig = $this->config->database;
             return $this->dbAdaptersFactory->getAdapter($dbConfig->adapter, $dbConfig->toArray());
-        });
+        }, true);
     }
 }

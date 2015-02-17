@@ -35,6 +35,11 @@ abstract class AbstractBootstrap {
     protected $config;
 
     /**
+     * @var array default services
+     */
+    protected $defaultServices = [];
+
+    /**
      * @param array $config
      */
     public function __construct(array $config) {
@@ -53,10 +58,13 @@ abstract class AbstractBootstrap {
         $this->registerConfig();
         $this->registerServices();
         $this->registerModules();
+        $this->application->setDI($this->di);
         return $this->application;
     }
 
     /**
+     * Set DI
+     *
      * @param DI $di
      */
     public function setDi(DI $di) {
@@ -141,6 +149,6 @@ abstract class AbstractBootstrap {
      * @return array
      */
     protected function getServicesList() {
-        return $this->config->services->toArray();
+        return array_merge($this->defaultServices, $this->config->services->toArray());
     }
 } 

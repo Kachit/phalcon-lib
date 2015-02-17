@@ -11,6 +11,8 @@ use Phalcon\Mvc\Router as PhalconRouter;
 use Phalcon\DI;
 use Phalcon\Mvc\Router\Group as RoutesGroup;
 
+use Kachit\Phalcon\Config\Loader as ConfigLoader;
+
 class Router extends AbstractProvider {
 
     /**
@@ -19,10 +21,18 @@ class Router extends AbstractProvider {
     protected $router;
 
     /**
+     * @var ConfigLoader
+     */
+    protected $configLoader;
+
+    /**
+     * Init
+     *
      * @param DI $container
      */
     public function __construct(DI $container) {
         parent::__construct($container);
+        $this->configLoader = new ConfigLoader();
         $this->router = new PhalconRouter();
     }
 
@@ -47,9 +57,11 @@ class Router extends AbstractProvider {
      */
     protected function registerRoutes() {
         foreach ($this->config->modules->toArray() as $module => $params) {
-            $routes = $this->getRoutesFile($params['routes']);
-            $this->registerModuleRoutes($routes);
-            $this->registerModuleRouteGroups($routes);
+            if (isset($params['routes'])) {
+                $routes = $this->getRoutesFile($params['routes']);
+                $this->registerModuleRoutes($routes);
+                $this->registerModuleRouteGroups($routes);
+            }
         }
     }
 
@@ -60,7 +72,7 @@ class Router extends AbstractProvider {
      * @return array
      */
     protected function getRoutesFile($path) {
-        return (is_file($path)) ? include $path : [];
+        return (is_file($path)) ? $this->configLoader->load($path)->toArray() : [];
     }
 
     /**
