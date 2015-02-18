@@ -6,12 +6,15 @@
  */
 namespace Kachit\Phalcon\Hmvc;
 
-use Phalcon\DI\Injectable;
 use Phalcon\Config;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Http\ResponseInterface;
 
-class Request extends Injectable {
+use Kachit\Phalcon\DI\InjectableTrait;
+
+class Request {
+
+    use InjectableTrait;
 
     /**
      * Does a HMVC request in the application
@@ -32,30 +35,23 @@ class Request extends Injectable {
         $dispatcher->setControllerName($controller);
         $dispatcher->setActionName($action);
         $dispatcher->setParams($params);
-
-        $dispatcher->dispatch();
-
-        $response = $dispatcher->getReturnedValue();
-        if ($response instanceof ResponseInterface) {
-            return $response->getContent();
-        }
-
-        return $response;
+        /* @var \Phalcon\Mvc\Controller $dispatchedController */
+        $dispatchedController = $dispatcher->dispatch();
+        return $dispatchedController->response->getContent();
     }
 
     /**
-     * getDispatcher
+     * Get dispatcher
      *
      * @return Dispatcher
      */
     protected function getDispatcher() {
-        $dispatcher = new Dispatcher();
-        $dispatcher->setDI($this->getDI());
+        $dispatcher = clone $this->getDI()->get('dispatcher');
         return $dispatcher;
     }
 
     /**
-     * getConfig
+     * Get config
      *
      * @return Config
      */

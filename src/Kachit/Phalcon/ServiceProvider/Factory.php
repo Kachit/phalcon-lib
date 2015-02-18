@@ -9,9 +9,9 @@ namespace Kachit\Phalcon\ServiceProvider;
 
 use Phalcon\DI;
 
-use Kachit\Phalcon\Common\Factory\AbstractFactory;
+use Kachit\Phalcon\Common\Factory\AbstractFactoryCascade;
 
-class Factory extends AbstractFactory {
+class Factory extends AbstractFactoryCascade {
 
     /**
      * @var DI
@@ -52,7 +52,7 @@ class Factory extends AbstractFactory {
      *
      * @return string
      */
-    protected function getNamespace() {
-        return __NAMESPACE__;
+    protected function getNamespaces() {
+        return [__NAMESPACE__];
     }
 }

@@ -41,7 +41,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @expectedException \Exception
-     * @expectedExceptionMessage Class "Kachit\Phalcon\ServiceProvider\Fake" is not exists
+     * @expectedExceptionMessage Class "fake" is not exists in this namespaces ["Kachit\\Phalcon\\ServiceProvider"]
      */
     public function testGetProviderInvalid() {
         $this->testable->getProvider('fake');
