@@ -8,7 +8,6 @@ namespace Kachit\Phalcon\Hmvc;
 
 use Phalcon\Config;
 use Phalcon\Mvc\Dispatcher;
-use Phalcon\Http\ResponseInterface;
 
 use Kachit\Phalcon\DI\InjectableTrait;
 
@@ -26,12 +25,12 @@ class Request {
         $dispatcher = $this->getDispatcher();
         $config = $this->getConfig();
 
-        $module = ($location['module']) ? $location['module'] : $config->defaultModule;
-        $controller = ($location['controller']) ? $location['controller'] : $config->defaultController;
-        $action = ($location['action']) ? $location['action'] : $config->defaultAction;
+        $namespace = ($location['namespace']) ? $location['namespace'] : $dispatcher->getNamespaceName();
+        $controller = ($location['controller']) ? $location['controller'] : $config->application->defaultController;
+        $action = ($location['action']) ? $location['action'] : $config->application->defaultAction;
         $params = ($location['params']) ? (array) $location['params'] : [];
 
-        $dispatcher->setModuleName($module);
+        $dispatcher->setNamespaceName($namespace);
         $dispatcher->setControllerName($controller);
         $dispatcher->setActionName($action);
         $dispatcher->setParams($params);
