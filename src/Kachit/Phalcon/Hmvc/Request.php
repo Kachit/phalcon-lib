@@ -34,9 +34,14 @@ class Request {
         $dispatcher->setControllerName($controller);
         $dispatcher->setActionName($action);
         $dispatcher->setParams($params);
-        /* @var \Phalcon\Mvc\Controller $dispatchedController */
-        $dispatchedController = $dispatcher->dispatch();
-        return $dispatchedController->response->getContent();
+        try {
+            /* @var \Phalcon\Mvc\Controller $dispatchedController */
+            $dispatchedController = $dispatcher->dispatch();
+            $content = $dispatchedController->response->getContent();
+        } catch (\Exception $exception) {
+            $content = $exception->getMessage();
+        }
+        return $content;
     }
 
     /**

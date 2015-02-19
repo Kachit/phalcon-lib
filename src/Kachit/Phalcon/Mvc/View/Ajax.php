@@ -1,6 +1,6 @@
 <?php
 /**
- * Class RestView
+ * View for ajax requests
  *
  * @author Kachit
  * @package Kachit\Phalcon\Mvc
@@ -12,7 +12,7 @@ use Phalcon\Cache\BackendInterface;
 use Phalcon\Mvc\View\EngineInterface;
 use Phalcon\Events\ManagerInterface;
 
-class Rest extends View {
+class Ajax extends View {
 
     /**
      * @var string
@@ -20,10 +20,14 @@ class Rest extends View {
     protected $currentEngine = 'json';
 
     /**
-     * @param string $currentEngine
+     * Set current engine
+     *
+     * @param $currentEngine
+     * @return $this
      */
     public function setCurrentEngine($currentEngine) {
         $this->currentEngine = $currentEngine;
+        return $this;
     }
 
     /**
@@ -37,7 +41,6 @@ class Rest extends View {
      * @return null
      */
     protected function _engineRender($engines, $viewPath, $silence, $mustClean, $cache = null) {
-        $notExists = true;
         $viewParams = $this->_viewParams;
         /* @var ManagerInterface $eventsManager */
         $eventsManager = $this->_eventsManager;
@@ -77,9 +80,14 @@ class Rest extends View {
         /* @var EngineInterface $engine*/
         foreach ($engines as $extension => $engine) {
             if ($extension == $this->currentEngine) {
+                if (is_object($eventsManager)) {
+                    if ($eventsManager->fire('view:beforeRenderView', $this) === false) {
+                        continue;
+                    }
+                }
+
                 $engine->render(null, $viewParams, $mustClean);
 
-                $notExists = false;
                 if (is_object($eventsManager)) {
                     $eventsManager->fire('view:afterRenderView', $this);
                 }

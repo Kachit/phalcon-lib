@@ -29,7 +29,16 @@ abstract class AbstractFactory {
      */
     protected function generateClassName($name, $namespace = null) {
         $namespace = ($namespace) ? $namespace : $this->getNamespace();
-        return $namespace . '\\' . $this->filterClassName($name);
+        return $namespace . '\\' . $this->filterClassName($name) . $this->getClassSuffix();
+    }
+
+    /**
+     * Get class suffix
+     *
+     * @return string
+     */
+    protected function getClassSuffix() {
+        return '';
     }
 
     /**
