@@ -7,16 +7,11 @@
 namespace Kachit\Phalcon\Tests\Mvc;
 
 use Phalcon\DI;
-use Phalcon\Config;
 
 use Kachit\Phalcon\Testable\Mvc\ModuleTestable;
+use Kachit\Phalcon\Tester\PhpUnit\TestCase;
 
-class AbstractModuleTest extends \PHPUnit_Framework_TestCase {
-
-    /**
-     * @var DI
-     */
-    private $di;
+class AbstractModuleTest extends TestCase {
 
     /**
      * @var ModuleTestable
@@ -27,7 +22,9 @@ class AbstractModuleTest extends \PHPUnit_Framework_TestCase {
      * Init
      */
     protected function setUp() {
-        $this->getTestableDi();
+        $this->getTester()->setDi(DI::getDefault());
+        $this->getTester()->setTestableConfig($this->getTestableConfig());
+        parent::setUp();
         $this->testable = new ModuleTestable();
     }
 
@@ -50,23 +47,9 @@ class AbstractModuleTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return DI
-     */
-    protected function getTestableDi() {
-        if (empty($this->di)) {
-            $di = DI::getDefault();
-            $di->set('config', function() {
-                return $this->getTestableConfig();
-            });
-            $this->di = $di;
-        }
-        return $this->di;
-    }
-
-    /**
-     * @return Config
+     * @return array
      */
     protected function getTestableConfig() {
-        return new Config(['application' => ['foo' => 'bar']]);
+        return ['application' => ['foo' => 'bar']];
     }
 }

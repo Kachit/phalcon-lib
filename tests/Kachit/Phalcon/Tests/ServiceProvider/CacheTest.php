@@ -8,21 +8,16 @@
 namespace Kachit\Phalcon\Tests\ServiceProvider;
 
 use Kachit\Phalcon\Testable\ServiceProvider\CacheTestable;
+use Kachit\Phalcon\Tester\PhpUnit\TestCase;
 
-use Phalcon\DI;
-use Phalcon\Config;
-
-class CacheTest extends \PHPUnit_Framework_TestCase {
+class CacheTest extends TestCase {
 
     private $testable;
 
-    /**
-     * @var DI
-     */
-    private $di;
-
     protected function setUp() {
-        $this->testable = new CacheTestable($this->getTestableDi());
+        $this->getTester()->setTestableConfig($this->getTestableConfig());
+        parent::setUp();
+        $this->testable = new CacheTestable($this->getTester()->getDi());
     }
 
     public function test() {
@@ -30,34 +25,18 @@ class CacheTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return DI
-     */
-    protected function getTestableDi() {
-        if (empty($this->di)) {
-            $di = new DI();
-            $di->set('config', function() {
-                return $this->getTestableConfig();
-            });
-            $this->di = $di;
-        }
-        return $this->di;
-    }
-
-    /**
-     * @return Config
+     * @return array
      */
     protected function getTestableConfig() {
-        return new Config(
-            [
-                'application' => [
-                    'defaultModule' => 'foo',
-                    'defaultNamespace' => 'bar',
-                ],
-                'router' => [
-                    'removeExtraSlashes' => true,
-                    'enableDefaultRoutes' => true,
-                ],
-            ]
-        );
+        return [
+            'application' => [
+                'defaultModule' => 'foo',
+                'defaultNamespace' => 'bar',
+            ],
+            'router' => [
+                'removeExtraSlashes' => true,
+                'enableDefaultRoutes' => true,
+            ],
+        ];
     }
 }

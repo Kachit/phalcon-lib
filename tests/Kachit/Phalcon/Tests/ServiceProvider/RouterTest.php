@@ -8,12 +8,13 @@
 namespace Kachit\Phalcon\Tests\ServiceProvider;
 
 use Kachit\Phalcon\Testable\ServiceProvider\RouterTestable;
+use Kachit\Phalcon\Tester\PhpUnit\TestCase;
 
 use Phalcon\DI;
 use Phalcon\Config;
 use Phalcon\Mvc\Router;
 
-class RouterTest extends \PHPUnit_Framework_TestCase {
+class RouterTest extends TestCase {
 
     /**
      * @var RouterTestable
@@ -29,7 +30,10 @@ class RouterTest extends \PHPUnit_Framework_TestCase {
      * Init
      */
     protected function setUp() {
-        $this->testable = new RouterTestable($this->getTestableDi());
+        parent::setUp();
+        $this->getTester()->setTestableConfig($this->getTestableConfig());
+        $this->di = $this->getTester()->getDi();
+        $this->testable = new RouterTestable($this->di);
     }
 
     public function testGetRoutesFile() {
@@ -116,40 +120,24 @@ class RouterTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return DI
-     */
-    protected function getTestableDi() {
-        if (empty($this->di)) {
-            $di = new DI();
-            $di->set('config', function() {
-                return $this->getTestableConfig();
-            });
-            $this->di = $di;
-        }
-        return $this->di;
-    }
-
-    /**
-     * @return Config
+     * @return array
      */
     protected function getTestableConfig() {
-        return new Config(
-            [
-                'application' => [
-                    'defaultModule' => 'foo',
-                    'defaultNamespace' => 'bar',
+        return [
+            'application' => [
+                'defaultModule' => 'foo',
+                'defaultNamespace' => 'bar',
+            ],
+            'router' => [
+                'removeExtraSlashes' => true,
+                'enableDefaultRoutes' => true,
+            ],
+            'modules' => [
+                'foo' => [
+                    'routes' => $this->getTestableFile('routes.php'),
                 ],
-                'router' => [
-                    'removeExtraSlashes' => true,
-                    'enableDefaultRoutes' => true,
-                ],
-                'modules' => [
-                    'foo' => [
-                        'routes' => $this->getTestableFile('routes.php'),
-                    ],
-                ]
             ]
-        );
+        ];
     }
 
     /**
