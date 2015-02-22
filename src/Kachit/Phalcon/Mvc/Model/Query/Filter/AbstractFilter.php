@@ -6,7 +6,7 @@
  */
 namespace Kachit\Phalcon\Mvc\Model\Query\Filter;
 
-use Kachit\Phalcon\Utils\Helper\ObjectConverterTrait;
+use Kachit\Helper\ObjectConverterTrait;
 
 abstract class AbstractFilter implements FilterInterface {
 
