@@ -31,8 +31,9 @@ class RequestTest extends TestCase {
     }
 
     public function testGetConfig() {
-        //$result = $this->testable->getConfig();
-        //$this->assertInstanceOf('Phalcon\Config', $result);
+        $this->testable->setDi($this->getTester()->getDi());
+        $result = $this->testable->getConfig();
+        $this->assertInstanceOf('Phalcon\Config', $result);
     }
 
     public function testGetDispatcher() {
