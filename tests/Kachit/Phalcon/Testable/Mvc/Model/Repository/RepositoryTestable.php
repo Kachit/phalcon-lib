@@ -13,7 +13,7 @@ use Kachit\Phalcon\Mvc\Model\Repository\Exception;
 use Kachit\Phalcon\Mvc\Model\Entity\EntitiesFactory;
 use Kachit\Phalcon\Mvc\Model\Query\Filter\FiltersFactory;
 
-use Phalcon\Mvc\Model\Query\Builder;
+use Kachit\Phalcon\Mvc\Model\Query\Builder;
 use Phalcon\Mvc\Model\Manager;
 
 class RepositoryTestable extends AbstractRepository {
