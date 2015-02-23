@@ -2,7 +2,7 @@
 /**
  * Class FiltersFactoryTest
  */
-namespace Kachit\Phalcon\Testable\Mvc\Model\Entity;
+namespace Kachit\Phalcon\Test\Mvc\Model\Query\Filter;
 
 use Kachit\Phalcon\Mvc\Model\Query\Filter\FiltersFactory;
 
@@ -24,7 +24,7 @@ class FiltersFactoryTest extends \PHPUnit_Framework_TestCase {
      * Init
      */
     public function testGetObjectValid() {
-        $entityName = 'Kachit\Phalcon\Testable\Mvc\Model\QueryFilter\FilterTestable';
+        $entityName = 'Kachit\Phalcon\Testable\Mvc\Model\Query\Filter\FilterTestable';
         $result = $this->testable->getObject($entityName);
         $this->assertInstanceOf($entityName, $result);
     }

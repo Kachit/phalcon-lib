@@ -10,9 +10,13 @@ namespace Kachit\Phalcon\Bootstrap;
 use Phalcon\Config;
 use Phalcon\DI;
 use Phalcon\Mvc\Application;
+
 use Kachit\Phalcon\ServiceProvider\Factory as ProvidersFactory;
+use Kachit\Phalcon\Config\LoaderTrait;
 
 abstract class AbstractBootstrap {
+
+    use LoaderTrait;
 
     /**
      * @var DI
@@ -40,13 +44,15 @@ abstract class AbstractBootstrap {
     protected $defaultServices = [];
 
     /**
-     * @param array $config
+     * Init
+     *
+     * @param string $configPath
      */
-    public function __construct(array $config) {
+    public function __construct($configPath) {
+        $this->createConfig($configPath);
         $this->createDiContainer();
         $this->createApplication();
         $this->createServiceFactory();
-        $this->createConfig($config);
     }
 
     /**
@@ -100,10 +106,10 @@ abstract class AbstractBootstrap {
     /**
      * Create config
      *
-     * @param $config
+     * @param string $configPath
      */
-    protected function createConfig(array $config) {
-        $this->config = new Config($config);
+    protected function createConfig($configPath) {
+        $this->config = $this->getConfigLoader()->load($configPath);
     }
 
     /**

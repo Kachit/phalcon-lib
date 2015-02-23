@@ -33,12 +33,9 @@ class CliTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @return array
+     * @return string
      */
     protected function getTestableConfig() {
-        return [
-            'services' => [],
-            'modules' => [],
-        ];
+        return TESTS_ROOT . '/stubs/bootstrap/config-simple.php';
     }
 }

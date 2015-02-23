@@ -14,14 +14,14 @@ class CacheTestable extends Cache {
     /**
      * @return \Phalcon\Cache\BackendInterface
      */
-    protected function getCacheAdapterBackend() {
+    public function getCacheAdapterBackend() {
         return parent::getCacheAdapterBackend();
     }
 
     /**
      * @return \Phalcon\Cache\FrontendInterface
      */
-    protected function getCacheAdapterFrontend() {
+    public function getCacheAdapterFrontend() {
         return parent::getCacheAdapterFrontend();
     }
 }

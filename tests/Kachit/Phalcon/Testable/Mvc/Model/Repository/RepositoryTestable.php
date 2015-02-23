@@ -7,7 +7,7 @@
 namespace Kachit\Phalcon\Testable\Mvc\Model\Repository;
 
 use Kachit\Phalcon\Mvc\Model\Query\Filter\FilterInterface as QueryFilter;
-use Kachit\Phalcon\Testable\Mvc\Model\QueryFilter\FilterTestable;
+use Kachit\Phalcon\Testable\Mvc\Model\Query\Filter\FilterTestable;
 use Kachit\Phalcon\Mvc\Model\Repository\AbstractRepository;
 use Kachit\Phalcon\Mvc\Model\Repository\Exception;
 use Kachit\Phalcon\Mvc\Model\Entity\EntitiesFactory;
@@ -47,7 +47,7 @@ class RepositoryTestable extends AbstractRepository {
      * @return string
      */
     public function getQueryFilterName() {
-        return 'Kachit\Phalcon\Testable\Mvc\Model\QueryFilter\FilterTestable';
+        return 'Kachit\Phalcon\Testable\Mvc\Model\Query\Filter\FilterTestable';
     }
 
     /**

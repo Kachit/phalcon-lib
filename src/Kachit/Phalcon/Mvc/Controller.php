@@ -17,7 +17,7 @@ class Controller extends PhalconController {
     /**
      * @var bool
      */
-    protected $isHmvcResponse = false;
+    private $isHmvcMode = false;
 
     /**
      * After execute route event
@@ -25,7 +25,7 @@ class Controller extends PhalconController {
      * @param Dispatcher $dispatcher
      */
     public function afterExecuteRoute(Dispatcher $dispatcher) {
-        if ($this->isHmvcResponse) {
+        if ($this->isHmvcMode) {
             $this->createHmvcResponse($dispatcher);
         }
     }
@@ -40,18 +40,22 @@ class Controller extends PhalconController {
     /**
      * Set response status code
      *
-     * @param string $code
+     * @param int $code
      * @param string $message
+     * @return $this
      */
     protected function setStatusCode($code, $message = null) {
         $this->response->setStatusCode($code, $message);
+        return $this;
     }
 
     /**
      * Set status code Not Found
+     *
+     * @return Controller
      */
     protected function setStatusNotFound() {
-        $this->setStatusCode(StatusCode::NOT_FOUND);
+        return $this->setStatusCode(StatusCode::NOT_FOUND);
     }
 
     /**
@@ -60,7 +64,27 @@ class Controller extends PhalconController {
      * @param Dispatcher $dispatcher
      */
     protected function createHmvcResponse(Dispatcher $dispatcher) {
-        $this->view->render($dispatcher->getControllerName(), $dispatcher->getActionName())->getContent();
+        $this->view->render($dispatcher->getControllerName(), $dispatcher->getActionName());
         $this->response->setContent($this->view->getContent());
+    }
+
+    /**
+     * Enable hmvc
+     *
+     * @return $this
+     */
+    protected function enableHmvc() {
+        $this->isHmvcMode = true;
+        return $this;
+    }
+
+    /**
+     * Disable hmvc
+     *
+     * @return $this
+     */
+    protected function disableHmvc() {
+        $this->isHmvcMode = false;
+        return $this;
     }
 } 

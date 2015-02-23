@@ -12,6 +12,9 @@ use Kachit\Phalcon\Tester\PhpUnit\TestCase;
 
 class CacheTest extends TestCase {
 
+    /**
+     * @var CacheTestable
+     */
     private $testable;
 
     protected function setUp() {
@@ -20,8 +23,23 @@ class CacheTest extends TestCase {
         $this->testable = new CacheTestable($this->getTester()->getDi());
     }
 
-    public function test() {
+    public function testGetCacheAdapterBackend() {
+        $result = $this->testable->getCacheAdapterBackend();
+        $this->assertInstanceOf('Phalcon\Cache\BackendInterface', $result);
+        $this->assertInstanceOf('Phalcon\Cache\Backend\File', $result);
+    }
 
+    public function testGetCacheAdapterFrontend() {
+        $result = $this->testable->getCacheAdapterFrontend();
+        $this->assertInstanceOf('Phalcon\Cache\FrontendInterface', $result);
+        $this->assertInstanceOf('Phalcon\Cache\Frontend\Data', $result);
+    }
+
+    public function testRegister() {
+        $this->testable->register();
+        $this->assertTrue($this->getTester()->getDi()->has('cache'));
+        $this->assertInstanceOf('Phalcon\Cache\Backend\File', $this->getTester()->getDi()->get('cache'));
+        $this->assertInstanceOf('Phalcon\Cache\BackendInterface', $this->getTester()->getDi()->get('cache'));
     }
 
     /**
@@ -29,13 +47,14 @@ class CacheTest extends TestCase {
      */
     protected function getTestableConfig() {
         return [
-            'application' => [
-                'defaultModule' => 'foo',
-                'defaultNamespace' => 'bar',
-            ],
-            'router' => [
-                'removeExtraSlashes' => true,
-                'enableDefaultRoutes' => true,
+            'cache' => [
+                'frontend' => [
+                    'adapter' => 'Data',
+                ],
+                'backend' => [
+                    'adapter' => 'File',
+                    'cacheDir' => TESTS_ROOT,
+                ],
             ],
         ];
     }

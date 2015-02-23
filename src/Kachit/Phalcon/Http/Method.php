@@ -13,6 +13,8 @@ class Method {
     const DELETE = 'DELETE';
     const HEAD = 'HEAD';
     const OPTIONS = 'OPTIONS';
+    const TRACE = 'TRACE';
+    const CONNECT = 'CONNECT';
 
     /**
      * @return array
@@ -26,6 +28,8 @@ class Method {
             self::DELETE,
             self::HEAD,
             self::OPTIONS,
+            self::TRACE,
+            self::CONNECT,
         ];
     }
 }

@@ -10,12 +10,13 @@ namespace Kachit\Phalcon\Mvc\Model\Repository;
 use Kachit\Phalcon\Mvc\Model\Query\Filter\FilterInterface as QueryFilter;
 use Kachit\Phalcon\Mvc\Model\Entity\EntitiesFactory;
 use Kachit\Phalcon\Mvc\Model\Query\Filter\FiltersFactory;
+use Kachit\Phalcon\Mvc\Model\Manager;
+use Kachit\Phalcon\Mvc\Model\Query\Builder;
+
 use Kachit\Phalcon\DI\InjectableTrait;
 
-use Phalcon\Mvc\Model\Manager;
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
-use Phalcon\Mvc\Model\Query\Builder;
 
 abstract class AbstractRepository implements RepositoryInterface {
 
@@ -25,6 +26,21 @@ abstract class AbstractRepository implements RepositoryInterface {
      * Default primary key field
      */
     const PRIMARY_KEY_DEFAULT_FIELD = 'id';
+
+    /**
+     * @var Manager
+     */
+    private $modelsManager;
+
+    /**
+     * @var EntitiesFactory
+     */
+    private $entitiesFactory;
+
+    /**
+     * @var FiltersFactory
+     */
+    private $filtersFactory;
 
     /**
      * Find by primary key
@@ -60,6 +76,21 @@ abstract class AbstractRepository implements RepositoryInterface {
         $query = $this->createQueryByFilter($filter);
         $this->filterQueryPost($query, $filter);
         return $query->getQuery()->execute();
+    }
+
+    /**
+     * Count rows by filter
+     *
+     * @param QueryFilter $filter
+     * @return int
+     * @throws Exception
+     */
+    public function count(QueryFilter $filter = null) {
+        $filter = $this->checkQueryFilter($filter);
+        $query = $this->createQueryByFilter($filter);
+        $this->filterQueryPost($query, $filter);
+        $query->count();
+        return $this->fetchColumn($query);
     }
 
     /**
@@ -158,7 +189,10 @@ abstract class AbstractRepository implements RepositoryInterface {
      * @return Manager
      */
     protected function getModelsManager() {
-        return $this->getDi()->get('modelsManager');
+        if (empty($this->modelsManager)) {
+            $this->modelsManager = $this->getDi()->get('modelsManager');
+        }
+        return $this->modelsManager;
     }
 
     /**
@@ -167,7 +201,10 @@ abstract class AbstractRepository implements RepositoryInterface {
      * @return EntitiesFactory
      */
     protected function getEntitiesFactory() {
-        return new EntitiesFactory();
+        if (empty($this->entitiesFactory)) {
+            $this->entitiesFactory = new EntitiesFactory();
+        }
+        return $this->entitiesFactory;
     }
 
     /**
@@ -176,7 +213,10 @@ abstract class AbstractRepository implements RepositoryInterface {
      * @return FiltersFactory
      */
     protected function getFiltersFactory() {
-        return new FiltersFactory();
+        if (empty($this->filtersFactory)) {
+            $this->filtersFactory = new FiltersFactory();
+        }
+        return $this->filtersFactory;
     }
 
     /**
@@ -186,5 +226,16 @@ abstract class AbstractRepository implements RepositoryInterface {
      */
     protected function getPrimaryKeyField() {
         return self::PRIMARY_KEY_DEFAULT_FIELD;
+    }
+
+    /**
+     * Fetch column
+     *
+     * @param Builder $query
+     * @return mixed
+     */
+    protected function fetchColumn(Builder $query) {
+        $result = $query->getQuery()->getSingleResult()->toArray();
+        return current($result);
     }
 }
