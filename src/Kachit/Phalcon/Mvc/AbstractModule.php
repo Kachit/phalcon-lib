@@ -51,7 +51,6 @@ abstract class AbstractModule implements ModuleDefinitionInterface {
     public function registerServices($dependencyInjector) {
         $this->registerAvailableServices();
         $this->registerCustomServices();
-
     }
 
     /**

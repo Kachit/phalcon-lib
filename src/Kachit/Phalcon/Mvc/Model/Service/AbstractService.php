@@ -37,7 +37,7 @@ abstract class AbstractService {
     }
 
     /**
-     * findById
+     * Find item by id
      *
      * @param int $id
      * @return Model
@@ -47,7 +47,27 @@ abstract class AbstractService {
     }
 
     /**
-     * findAll
+     * Count items by filter
+     *
+     * @param FilterInterface $filter
+     * @return int
+     */
+    public function count(FilterInterface $filter = null) {
+        return $this->repository->count($filter);
+    }
+
+    /**
+     * Find item by filter
+     *
+     * @param FilterInterface $filter
+     * @return Model
+     */
+    public function findFirst(FilterInterface $filter = null) {
+        return $this->repository->findFirst($filter);
+    }
+
+    /**
+     * Find all items by filter
      *
      * @param FilterInterface $filter
      * @return Resultset

@@ -10,7 +10,6 @@ namespace Kachit\Phalcon\Mvc\Model\Repository;
 use Kachit\Phalcon\Mvc\Model\Query\Filter\FilterInterface as QueryFilter;
 use Kachit\Phalcon\Mvc\Model\Entity\EntitiesFactory;
 use Kachit\Phalcon\Mvc\Model\Query\Filter\FiltersFactory;
-use Kachit\Phalcon\Mvc\Model\Manager;
 use Kachit\Phalcon\Mvc\Model\Query\Builder;
 
 use Kachit\Phalcon\DI\InjectableTrait;
@@ -28,9 +27,9 @@ abstract class AbstractRepository implements RepositoryInterface {
     const PRIMARY_KEY_DEFAULT_FIELD = 'id';
 
     /**
-     * @var Manager
+     * @var Builder
      */
-    private $modelsManager;
+    private $queryBuilder;
 
     /**
      * @var EntitiesFactory
@@ -142,8 +141,11 @@ abstract class AbstractRepository implements RepositoryInterface {
      * @return Builder
      */
     protected function createQuery($alias = null) {
-        return $this->getModelsManager()->createBuilder($alias)
-            ->addFrom($this->getEntityName(), $alias);
+        if (empty($this->queryBuilder)) {
+            $this->queryBuilder = new Builder();
+            $this->queryBuilder->addFrom($this->getEntityName(), $alias);
+        }
+        return $this->queryBuilder;
     }
 
     /**
@@ -181,18 +183,6 @@ abstract class AbstractRepository implements RepositoryInterface {
         if ($filter->getOrderBy()) {
             $query->orderBy($filter->getOrderBy());
         }
-    }
-
-    /**
-     * Get models manager
-     *
-     * @return Manager
-     */
-    protected function getModelsManager() {
-        if (empty($this->modelsManager)) {
-            $this->modelsManager = $this->getDi()->get('modelsManager');
-        }
-        return $this->modelsManager;
     }
 
     /**
