@@ -11,7 +11,7 @@ use Phalcon\Mvc\View\Engine\Php;
 use Phalcon\Mvc\ViewInterface;
 use Phalcon\DI;
 
-use Kachit\Phalcon\Utils\Helper\Json as JsonHelper;
+use Kachit\Helper\JsonHelper;
 
 class Json extends Php {
 
@@ -56,7 +56,16 @@ class Json extends Php {
      * @return $this
      */
     public function setEncodeOptions(array $options) {
-        $this->jsonHelper->setEncodeOptions($options);
+        $this->getEncoder()->setOptions($options);
         return $this;
+    }
+
+    /**
+     * Get encoder
+     *
+     * @return \Kachit\Helper\Json\Encoder
+     */
+    public function getEncoder() {
+        return $this->jsonHelper->getEncoder();
     }
 }

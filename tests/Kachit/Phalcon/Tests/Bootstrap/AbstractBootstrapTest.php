@@ -25,20 +25,20 @@ class AbstractBootstrapTest extends \PHPUnit_Framework_TestCase {
 
     public function testGetModulesList() {
         $result = $this->testable->getModulesList();
-        $expected = $this->getTestableConfig();
+        $expected = include $this->getTestableConfig();
         $this->assertEquals($expected['modules'], $result);
     }
 
     public function testGetServicesList() {
         $result = $this->testable->getServicesList();
-        $expected = $this->getTestableConfig();
+        $expected = include $this->getTestableConfig();
         $this->assertEquals($expected['services'], $result);
     }
 
     public function testRegisterConfig() {
         $this->testable->registerConfig();
         $di = $this->testable->getDi();
-        $expected = $this->getTestableConfig();
+        $expected = include $this->getTestableConfig();
         $this->assertTrue($di->has('config'));
         $result = $di->get('config');
         $this->assertInstanceOf('Phalcon\Config', $result);
@@ -52,20 +52,15 @@ class AbstractBootstrapTest extends \PHPUnit_Framework_TestCase {
         $this->assertTrue($di->has('volt'));
     }
 
+    public function testGetConfigLoader() {
+        $result = $this->testable->getConfigLoader();
+        $this->assertInstanceOf('Kachit\Phalcon\Config\Loader', $result);
+    }
+
     /**
-     * @return array
+     * @return string
      */
     protected function getTestableConfig() {
-        return [
-            'services' => [
-                'volt'
-            ],
-            'volt' => [],
-            'modules' => [
-                'frontend',
-                'backend',
-                'api',
-            ],
-        ];
+        return TESTS_ROOT . '/stubs/bootstrap/config-main.php';
     }
 }

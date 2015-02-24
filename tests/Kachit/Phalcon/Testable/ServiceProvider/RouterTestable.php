@@ -67,4 +67,13 @@ class RouterTestable extends Router {
     public function registerModuleRouteGroups(array $params) {
         parent::registerModuleRouteGroups($params);
     }
+
+    /**
+     * Get router
+     *
+     * @return PhalconRouter
+     */
+    public function getRouter() {
+        return $this->router;
+    }
 }

@@ -2,7 +2,7 @@
 /**
  * Class EntitiesFactoryTest
  */
-namespace Kachit\Phalcon\Testable\Mvc\Model\Entity;
+namespace Kachit\Phalcon\Test\Mvc\Model\Entity;
 
 use Kachit\Phalcon\Mvc\Model\Entity\EntitiesFactory;
 

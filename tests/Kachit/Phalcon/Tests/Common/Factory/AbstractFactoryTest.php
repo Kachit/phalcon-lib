@@ -59,4 +59,10 @@ class AbstractFactoryTest extends \PHPUnit_Framework_TestCase {
         $result = $this->testable->generateClassName('bar');
         $this->assertEquals('Foo\Bar', $result);
     }
+
+    public function testGenerateClassNameWithSuffix() {
+        $this->testable->setClassSuffix('Test');
+        $result = $this->testable->generateClassName('bar');
+        $this->assertEquals('Foo\BarTest', $result);
+    }
 }

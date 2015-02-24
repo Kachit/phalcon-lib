@@ -13,17 +13,13 @@ use Phalcon\DiInterface;
 use Phalcon\Mvc\ModuleDefinitionInterface;
 
 use Kachit\Phalcon\DI\InjectableTrait;
-use Kachit\Phalcon\Config\Loader as ConfigLoader;
+use Kachit\Phalcon\Config\LoaderTrait;
 use Kachit\Phalcon\ServiceProvider\Factory as ProvidersFactory;
 
 abstract class AbstractModule implements ModuleDefinitionInterface {
 
     use InjectableTrait;
-
-    /**
-     * @var ConfigLoader
-     */
-    protected $configLoader;
+    use LoaderTrait;
 
     /**
      * @var Config
@@ -34,7 +30,6 @@ abstract class AbstractModule implements ModuleDefinitionInterface {
      * Init
      */
     public function __construct() {
-        $this->configLoader = new ConfigLoader();
         $this->config = $this->getModuleConfig();
         $this->providersFactory = new ProvidersFactory($this->getDi());
     }
@@ -54,11 +49,26 @@ abstract class AbstractModule implements ModuleDefinitionInterface {
      * @param DiInterface $dependencyInjector
      */
     public function registerServices($dependencyInjector) {
+        $this->registerAvailableServices();
+        $this->registerCustomServices();
+    }
+
+    /**
+     * Register services available in module config
+     */
+    protected function registerAvailableServices() {
         $services = $this->config->module->services->toArray();
         foreach ($services as $service) {
             $provider = $this->providersFactory->getProvider($service);
             $provider->register();
         }
+    }
+
+    /**
+     * Register custom services
+     */
+    protected function registerCustomServices() {
+
     }
 
     /**
@@ -83,7 +93,7 @@ abstract class AbstractModule implements ModuleDefinitionInterface {
      * @return Config
      */
     protected function getModuleConfig() {
-        $config = $this->configLoader->load($this->getConfigPath());
+        $config = $this->getConfigLoader()->load($this->getConfigPath());
         /* @var Config $globalConfig */
         $globalConfig = $this->getDi()->get('config');
         $globalConfig->merge($config);

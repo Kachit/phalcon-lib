@@ -33,7 +33,7 @@ class Router extends AbstractProvider {
     public function __construct(DI $container) {
         parent::__construct($container);
         $this->configLoader = new ConfigLoader();
-        $this->router = new PhalconRouter();
+        $this->router = new PhalconRouter($this->config->router->enableDefaultRoutes);
     }
 
     /**
@@ -123,7 +123,7 @@ class Router extends AbstractProvider {
      * @param array $params
      */
     protected function registerModuleRoutes(array $params) {
-        if (!isset($params['routes'])) {
+        if (!isset($params['routes']) || !is_array($params['routes'])) {
             return;
         }
         foreach ($params['routes'] as $route) {
@@ -137,7 +137,7 @@ class Router extends AbstractProvider {
      * @param array $params
      */
     protected function registerModuleRouteGroups(array $params) {
-        if (!isset($params['groups'])) {
+        if (!isset($params['groups']) || !is_array($params['groups'])) {
             return;
         }
         foreach ($params['groups'] as $group) {

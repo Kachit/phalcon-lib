@@ -37,6 +37,15 @@ interface RepositoryInterface {
     public function findAll(FilterInterface $filter = null);
 
     /**
+     * Count rows by filter
+     *
+     * @param FilterInterface $filter
+     * @return int
+     * @throws Exception
+     */
+    public function count(FilterInterface $filter = null);
+
+    /**
      * Get model entity
      *
      * @return EntityInterface

@@ -18,6 +18,16 @@
     <filter>
         <whitelist>
             <directory suffix=".php">src/Kachit/Phalcon/</directory>
+            <exclude>
+                <file suffix=".php">src/Kachit/Phalcon/Cache/Manager.php</file>
+                <file suffix=".php">src/Kachit/Phalcon/Bootstrap/Environment.php</file>
+                <file suffix=".php">src/Kachit/Phalcon/Mvc/Model/Repository/Exception.php</file>
+                <file suffix=".php">src/Kachit/Phalcon/Mvc/Model/Repository/RepositoryInterface.php</file>
+                <file suffix=".php">src/Kachit/Phalcon/ServiceProvider/ServiceProviderInterface.php</file>
+                <file suffix=".php">src/Kachit/Phalcon/Mvc/Model/Query/Filter/FilterInterface.php</file>
+                <file suffix=".php">src/Kachit/Phalcon/Mvc/Model/Entity/EntityInterface.php</file>
+                <file suffix=".php">src/Kachit/Phalcon/Http/Response/StatusCode.php</file>
+            </exclude>
         </whitelist>
     </filter>
 </phpunit>

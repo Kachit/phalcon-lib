@@ -78,4 +78,13 @@ class AbstractBootstrapTestable extends AbstractBootstrap {
     public function getDi() {
         return $this->di;
     }
+
+    /**
+     * @return \Kachit\Phalcon\Config\Loader
+     */
+    public function getConfigLoader() {
+        return parent::getConfigLoader();
+    }
+
+
 }

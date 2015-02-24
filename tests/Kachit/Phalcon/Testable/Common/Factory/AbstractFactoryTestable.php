@@ -9,6 +9,11 @@ use Kachit\Phalcon\Common\Factory\AbstractFactory;
 class AbstractFactoryTestable extends AbstractFactory {
 
     /**
+     * @var
+     */
+    protected $classSuffix;
+
+    /**
      * Get class namespace
      *
      * @return string
@@ -66,5 +71,23 @@ class AbstractFactoryTestable extends AbstractFactory {
      */
     public function loadClass($className) {
         return parent::loadClass($className);
+    }
+
+    /**
+     * @return string
+     */
+    protected function getClassSuffix() {
+        return $this->classSuffix;
+    }
+
+    /**
+     * Set classSuffix
+     *
+     * @param mixed $classSuffix
+     * @return $this;
+     */
+    public function setClassSuffix($classSuffix) {
+        $this->classSuffix = $classSuffix;
+        return $this;
     }
 }

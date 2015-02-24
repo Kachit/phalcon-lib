@@ -7,14 +7,18 @@
 namespace Kachit\Phalcon\Testable\Mvc\Model\Repository;
 
 use Kachit\Phalcon\Mvc\Model\Query\Filter\FilterInterface as QueryFilter;
-use Kachit\Phalcon\Testable\Mvc\Model\QueryFilter\FilterTestable;
+use Kachit\Phalcon\Mvc\Model\Query\Filter\FiltersFactory;
+use Kachit\Phalcon\Mvc\Model\Query\Builder;
+
 use Kachit\Phalcon\Mvc\Model\Repository\AbstractRepository;
 use Kachit\Phalcon\Mvc\Model\Repository\Exception;
 use Kachit\Phalcon\Mvc\Model\Entity\EntitiesFactory;
-use Kachit\Phalcon\Mvc\Model\Query\Filter\FiltersFactory;
 
-use Phalcon\Mvc\Model\Query\Builder;
-use Phalcon\Mvc\Model\Manager;
+use Kachit\Phalcon\Testable\Mvc\Model\Query\Filter\FilterTestable;
+use Kachit\Phalcon\Testable\Mvc\Model\ResultsetTestable;
+
+use Phalcon\Mvc\Model;
+use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
 
 class RepositoryTestable extends AbstractRepository {
 
@@ -33,6 +37,47 @@ class RepositoryTestable extends AbstractRepository {
     }
 
     /**
+     * Find first row by filter
+     *
+     * @param QueryFilter $filter
+     * @return Model
+     */
+    public function findFirst(QueryFilter $filter = null) {
+        return $this->getModelEntity();
+    }
+
+    /**
+     * Find by primary key
+     *
+     * @param mixed $pk
+     * @return Model
+     */
+    public function findByPk($pk) {
+        return $this->getModelEntity();
+    }
+
+    /**
+     * Find all rows by filter
+     *
+     * @param QueryFilter $filter
+     * @return Resultset
+     */
+    public function findAll(QueryFilter $filter = null) {
+        return new ResultsetTestable();
+    }
+
+    /**
+     * Count rows by filter
+     *
+     * @param QueryFilter $filter
+     * @return int
+     * @throws Exception
+     */
+    public function count(QueryFilter $filter = null) {
+        return 123;
+    }
+
+    /**
      * Get entity name
      *
      * @return string
@@ -47,7 +92,7 @@ class RepositoryTestable extends AbstractRepository {
      * @return string
      */
     public function getQueryFilterName() {
-        return 'Kachit\Phalcon\Testable\Mvc\Model\QueryFilter\FilterTestable';
+        return 'Kachit\Phalcon\Testable\Mvc\Model\Query\Filter\FilterTestable';
     }
 
     /**
@@ -79,15 +124,6 @@ class RepositoryTestable extends AbstractRepository {
      */
     public function filterQueryPost(Builder $query, QueryFilter $filter) {
         parent::filterQueryPost($query, $filter);
-    }
-
-    /**
-     * Get models manager
-     *
-     * @return Manager
-     */
-    public function getModelsManager() {
-        return parent::getModelsManager();
     }
 
     /**
