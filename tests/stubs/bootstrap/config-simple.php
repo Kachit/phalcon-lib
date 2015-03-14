@@ -2,4 +2,5 @@
 return [
     'services' => [],
     'modules' => [],
+    'application' => [],
 ];
