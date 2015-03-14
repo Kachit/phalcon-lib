@@ -1,6 +1,6 @@
 <?php
 /**
- * Controller
+ * Base controller
  *
  * @author Kachit
  * @package Kachit\Phalcon\Mvc
@@ -28,13 +28,6 @@ class Controller extends PhalconController {
         if ($this->isHmvcMode) {
             $this->createHmvcResponse($dispatcher);
         }
-    }
-
-    /**
-     * Not found Action
-     */
-    public function notFoundAction() {
-        $this->setStatusNotFound();
     }
 
     /**

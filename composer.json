@@ -6,7 +6,8 @@
         "teapot/status": "dev-master",
         "kachit/helpers": "dev-master",
         "kachit/phalcon-tester": "dev-master",
-        "phalcon/incubator": "dev-master"
+        "phalcon/incubator": "dev-master",
+        "snowair/phalcon-debugbar": "dev-master"
     },
     "require-dev": {
         "satooshi/php-coveralls": "dev-master"

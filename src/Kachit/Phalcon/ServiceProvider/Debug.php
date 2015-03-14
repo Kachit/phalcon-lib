@@ -1,22 +1,22 @@
 <?php
 /**
- * Hmvc request provider
+ * Debug panel provider
  *
  * @author Kachit
  * @package Kachit\Phalcon\ServiceProvider
  */
 namespace Kachit\Phalcon\ServiceProvider;
 
-use Kachit\Phalcon\Hmvc\Request;
+use Snowair\Debugbar\ServiceProvider;
 
-class Hmvc extends AbstractProvider {
+class Debug extends AbstractProvider {
 
     /**
      * Register services
      */
     public function register() {
-        $this->container->set('hmvc', function () {
-            return new Request();
-        }, true);
+        $provider = new ServiceProvider();
+        $provider->register();
+        $provider->boot();
     }
 }

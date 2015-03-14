@@ -25,4 +25,18 @@ class Mvc extends AbstractBootstrap {
     protected function createApplication() {
         $this->application = new Application();
     }
+
+    /**
+     * Init application
+     *
+     * @return Application
+     */
+    public function registerApplication() {
+        $application = parent::registerApplication();
+        if ($this->config->application->debug) {
+            $this->di['app'] = $application;
+            $this->registerServiceProvider('debug');
+        }
+        return $application;
+    }
 }
