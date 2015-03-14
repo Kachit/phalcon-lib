@@ -2,5 +2,7 @@
 return [
     'services' => [],
     'modules' => [],
-    'application' => [],
+    'application' => [
+        'debug' => false,
+    ],
 ];
