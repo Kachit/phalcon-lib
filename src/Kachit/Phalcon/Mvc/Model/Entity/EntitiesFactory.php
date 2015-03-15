@@ -8,7 +8,6 @@
 namespace Kachit\Phalcon\Mvc\Model\Entity;
 
 use Kachit\Phalcon\Common\Factory\AbstractFactory;
-use Phalcon\Mvc\Model;
 
 class EntitiesFactory extends AbstractFactory {
 
@@ -16,7 +15,7 @@ class EntitiesFactory extends AbstractFactory {
      * Get object by class name
      *
      * @param string $className
-     * @return Model
+     * @return AbstractEntity
      */
     public function getObject($className) {
         return $this->loadClass($className);

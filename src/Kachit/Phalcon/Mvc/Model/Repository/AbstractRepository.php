@@ -11,10 +11,10 @@ use Kachit\Phalcon\Mvc\Model\Query\Filter\FilterInterface as QueryFilter;
 use Kachit\Phalcon\Mvc\Model\Entity\EntitiesFactory;
 use Kachit\Phalcon\Mvc\Model\Query\Filter\FiltersFactory;
 use Kachit\Phalcon\Mvc\Model\Query\Builder;
+use Kachit\Phalcon\Mvc\Model\Entity\AbstractEntity;
 
 use Kachit\Phalcon\DI\InjectableTrait;
 
-use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
 
 abstract class AbstractRepository implements RepositoryInterface {
@@ -45,7 +45,7 @@ abstract class AbstractRepository implements RepositoryInterface {
      * Find by primary key
      *
      * @param mixed $pk
-     * @return Model
+     * @return AbstractEntity
      */
     public function findByPk($pk) {
         $pkField = $this->getPrimaryKeyField();
@@ -56,7 +56,7 @@ abstract class AbstractRepository implements RepositoryInterface {
      * Find first row by filter
      *
      * @param QueryFilter $filter
-     * @return Model
+     * @return AbstractEntity
      */
     public function findFirst(QueryFilter $filter = null) {
         $filter = $this->checkQueryFilter($filter);
@@ -95,7 +95,7 @@ abstract class AbstractRepository implements RepositoryInterface {
     /**
      * Get model entity
      *
-     * @return Model
+     * @return AbstractEntity
      */
     public function getModelEntity() {
         $entity = $this->getEntityName();

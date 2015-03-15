@@ -8,8 +8,8 @@ namespace Kachit\Phalcon\Mvc\Model\Service;
 
 use Phalcon\Config;
 use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
-use Phalcon\Mvc\Model;
 
+use Kachit\Phalcon\Mvc\Model\Entity\AbstractEntity;
 use Kachit\Phalcon\Mvc\Model\Repository\RepositoryInterface;
 use Kachit\Phalcon\Mvc\Model\Query\Filter\FilterInterface;
 use Kachit\Phalcon\DI\InjectableTrait;
@@ -40,7 +40,7 @@ abstract class AbstractService {
      * Find item by id
      *
      * @param int $id
-     * @return Model
+     * @return AbstractEntity
      */
     public function findById($id) {
         return $this->repository->findByPk($id);
@@ -60,7 +60,7 @@ abstract class AbstractService {
      * Find item by filter
      *
      * @param FilterInterface $filter
-     * @return Model
+     * @return AbstractEntity
      */
     public function findFirst(FilterInterface $filter = null) {
         return $this->repository->findFirst($filter);
@@ -74,6 +74,30 @@ abstract class AbstractService {
      */
     public function findAll(FilterInterface $filter = null) {
         return $this->repository->findAll($filter);
+    }
+
+    /**
+     * Save entity
+     *
+     * @param array $data
+     * @return bool
+     */
+    public function save(array $data) {
+        /* @var AbstractEntity $entity */
+        $entity = $this->repository->getModelEntity();
+        return $entity->save($data);
+    }
+
+    /**
+     * Delete entity
+     *
+     * @param int $id
+     * @return bool
+     */
+    public function delete($id) {
+        /* @var AbstractEntity $entity */
+        $entity = $this->repository->findByPk($id);
+        return $entity->delete();
     }
 
     /**
