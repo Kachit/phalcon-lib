@@ -16,19 +16,10 @@ class Environment {
     const TESTING = 'testing';
 
     /**
-     * Property os
-     *
-     * @var string
-     */
-    public function __construct() {
-
-    }
-
-    /**
      * @return string
      */
-    public static function getEnvironment() {
-        return 'develop';
+    public static function detectEnvironment() {
+        return self::DEVELOP;
     }
 
     /**
@@ -62,7 +53,7 @@ class Environment {
      *
      * @return string
      */
-    public function getOS() {
+    public static function getOS() {
         return strtoupper(substr(PHP_OS, 0, 3));
     }
 
@@ -71,8 +62,8 @@ class Environment {
      *
      * @return bool
      */
-    public function isWindows() {
-        return $this->getOS() == self::OS_WINDOWS;
+    public static function isWindows() {
+        return self::getOS() == self::OS_WINDOWS;
     }
 
     /**
@@ -80,7 +71,7 @@ class Environment {
      *
      * @return bool
      */
-    public function isLinux() {
-        return $this->getOS() == self::OS_LINUX;
+    public static function isLinux() {
+        return self::getOS() == self::OS_LINUX;
     }
 }
