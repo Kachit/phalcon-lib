@@ -145,4 +145,14 @@ class RepositoryTestable extends Database {
     public function filterQueryPost(BuilderInterface $query, FilterInterface $filter) {
         parent::filterQueryPost($query, $filter);
     }
+
+    /**
+     * Check entity
+     *
+     * @param EntityInterface $entity
+     * @throws Exception
+     */
+    public function checkEntity(EntityInterface $entity) {
+        parent::checkEntity($entity);
+    }
 }

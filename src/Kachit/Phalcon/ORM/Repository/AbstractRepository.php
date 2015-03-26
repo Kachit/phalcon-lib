@@ -90,6 +90,7 @@ abstract class AbstractRepository implements RepositoryInterface {
      * @throws Exception
      */
     public function save(EntityInterface $entity) {
+        $this->checkEntity($entity);
         return $entity->save();
     }
 
@@ -123,6 +124,20 @@ abstract class AbstractRepository implements RepositoryInterface {
             throw new Exception('Query filter object "' . $badFilterClass . '" is not available for this repository');
         }
         return ($filter) ? $filter : $this->getQueryFilter();
+    }
+
+    /**
+     * Check entity
+     *
+     * @param EntityInterface $entity
+     * @throws Exception
+     */
+    protected function checkEntity(EntityInterface $entity) {
+        $entityName = get_class($this->getEntity());
+        if (is_object($entity) && !($entity instanceof $entityName)) {
+            $badEntityClass = get_class($entity);
+            throw new Exception('Entity object "' . $badEntityClass . '" is not available for this repository');
+        }
     }
 
     /**

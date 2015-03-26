@@ -10,6 +10,7 @@ use Kachit\Phalcon\Testable\ORM\Repository\RepositoryTestable;
 use Kachit\Phalcon\Testable\ORM\Query\Filter\FilterTestable;
 use Kachit\Phalcon\Testable\ORM\Query\Filter\FilterTestableInvalid;
 use Kachit\Phalcon\Testable\ORM\Entity\EntityTestable;
+use Kachit\Phalcon\Testable\ORM\Entity\EntityTestableInvalid;
 
 use Phalcon\DI;
 
@@ -123,5 +124,19 @@ class RepositoryTest extends \PHPUnit_Framework_TestCase {
         $entity = new EntityTestable();
         $result = $this->testable->save($entity);
         $this->assertTrue(is_bool($result));
+    }
+
+    public function testCheckEntityValid() {
+        $entity = new EntityTestable();
+        $this->testable->checkEntity($entity);
+    }
+
+    /**
+     * @expectedException \Kachit\Phalcon\ORM\Repository\Exception
+     * @expectedExceptionMessage Entity object "Kachit\Phalcon\Testable\ORM\Entity\EntityTestableInvalid" is not available for this repository
+     */
+    public function testCheckEntityInValid() {
+        $entity = new EntityTestableInvalid();
+        $this->testable->checkEntity($entity);
     }
 }
