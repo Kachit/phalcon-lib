@@ -7,6 +7,6 @@
  */
 namespace Kachit\Phalcon\ORM\Repository;
 
-abstract class Database implements RepositoryInterface {
+abstract class Database extends AbstractRepository {
 
 }
