@@ -56,7 +56,7 @@ interface EntityInterface {
     public function delete();
 
     /**
-     * Get primary key
+     * Get primary key field
      *
      * @return mixed
      */

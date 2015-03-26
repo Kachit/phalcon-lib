@@ -1,9 +1,10 @@
 <?php
 /**
- * Class FiltersFactory
+ * Filters loader
  *
  * @package Kachit\Phalcon\ORM\Query\Filter
  */
+namespace Kachit\Phalcon\ORM\Query\Filter;
 
 use Kachit\Phalcon\Common\Factory\AbstractFactory;
 
@@ -12,7 +13,7 @@ class FiltersFactory extends AbstractFactory {
     /**
      * Get object by class name
      *
-     * @param $className
+     * @param string $className
      * @return FilterInterface
      */
     public function getObject($className) {
