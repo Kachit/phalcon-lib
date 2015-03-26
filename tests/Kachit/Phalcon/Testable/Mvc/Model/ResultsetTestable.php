@@ -14,6 +14,4 @@ class ResultsetTestable extends Simple {
     public function __construct() {
 
     }
-
-
 }

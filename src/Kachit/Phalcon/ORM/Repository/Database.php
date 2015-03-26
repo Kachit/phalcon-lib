@@ -7,7 +7,7 @@
  */
 namespace Kachit\Phalcon\ORM\Repository;
 
-use Kachit\Phalcon\Mvc\Model\Query\Builder;
+use Kachit\Phalcon\ORM\Query\Builder;
 use Phalcon\Mvc\Model\Query\BuilderInterface;
 
 abstract class Database extends AbstractRepository {
@@ -20,7 +20,7 @@ abstract class Database extends AbstractRepository {
      */
     protected function createQuery($alias = null) {
         $queryBuilder = new Builder();
-        $queryBuilder->addFrom($alias, $this->getEntityName());
+        $queryBuilder->addFrom(get_class($this->getEntity()), $alias);
         return $queryBuilder;
     }
 }

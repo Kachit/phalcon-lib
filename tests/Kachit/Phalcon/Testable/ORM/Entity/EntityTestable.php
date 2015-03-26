@@ -6,8 +6,17 @@
  */
 namespace Kachit\Phalcon\Testable\ORM\Entity;
 
+use Kachit\Phalcon\ORM\Entity\EntityInterface;
 use Phalcon\Mvc\Model;
 
-class EntityTestable extends Model {
+class EntityTestable extends Model implements EntityInterface{
 
+    /**
+     * Get primary key field
+     *
+     * @return mixed
+     */
+    public function getPrimaryKey() {
+        // TODO: Implement getPrimaryKey() method.
+    }
 }

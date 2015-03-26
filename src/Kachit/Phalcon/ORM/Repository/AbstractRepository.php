@@ -8,44 +8,12 @@
 namespace Kachit\Phalcon\ORM\Repository;
 
 use Kachit\Phalcon\ORM\Query\Filter\FilterInterface;
-use Kachit\Phalcon\ORM\Entity\EntitiesFactory;
 use Kachit\Phalcon\ORM\Entity\EntityInterface;
-use Kachit\Phalcon\ORM\Query\Filter\FiltersFactory;
 use Kachit\Phalcon\ORM\Query\BuilderInterface;
 
 use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
 
 abstract class AbstractRepository implements RepositoryInterface {
-
-    /**
-     * @var EntitiesFactory
-     */
-    private $entitiesFactory;
-
-    /**
-     * @var FiltersFactory
-     */
-    private $filtersFactory;
-
-    /**
-     * Get model entity
-     *
-     * @return EntityInterface
-     */
-    public function getModelEntity() {
-        $entity = $this->getEntityName();
-        return $this->getEntitiesFactory()->getObject($entity);
-    }
-
-    /**
-     * Get query filter
-     *
-     * @return FilterInterface
-     */
-    public function getQueryFilter() {
-        $filter = $this->getQueryFilterName();
-        return $this->getFiltersFactory()->getObject($filter);
-    }
 
     /**
      * Find by primary key
@@ -125,7 +93,6 @@ abstract class AbstractRepository implements RepositoryInterface {
         return $entity->save();
     }
 
-
     /**
      * Create query by filter
      *
@@ -133,20 +100,6 @@ abstract class AbstractRepository implements RepositoryInterface {
      * @return BuilderInterface
      */
     abstract protected function createQueryByFilter(FilterInterface $filter);
-
-    /**
-     * Get entity name
-     *
-     * @return string
-     */
-    abstract protected function getEntityName();
-
-    /**
-     * Get query filter name
-     *
-     * @return string
-     */
-    abstract protected function getQueryFilterName();
 
     /**
      * Create query builder
@@ -157,30 +110,6 @@ abstract class AbstractRepository implements RepositoryInterface {
     abstract protected function createQuery($alias = null);
 
     /**
-     * Get entities factory
-     *
-     * @return EntitiesFactory
-     */
-    protected function getEntitiesFactory() {
-        if (empty($this->entitiesFactory)) {
-            $this->entitiesFactory = new EntitiesFactory();
-        }
-        return $this->entitiesFactory;
-    }
-
-    /**
-     * Get filters factory
-     *
-     * @return FiltersFactory
-     */
-    protected function getFiltersFactory() {
-        if (empty($this->filtersFactory)) {
-            $this->filtersFactory = new FiltersFactory();
-        }
-        return $this->filtersFactory;
-    }
-
-    /**
      * Check query filter
      *
      * @param FilterInterface $filter
@@ -188,7 +117,7 @@ abstract class AbstractRepository implements RepositoryInterface {
      * @throws Exception
      */
     protected function checkQueryFilter(FilterInterface $filter = null) {
-        $filterName = $this->getQueryFilterName();
+        $filterName = get_class($this->getQueryFilter());
         if (is_object($filter) && !($filter instanceof $filterName)) {
             $badFilterClass = get_class($filter);
             throw new Exception('Query filter object "' . $badFilterClass . '" is not available for this repository');
