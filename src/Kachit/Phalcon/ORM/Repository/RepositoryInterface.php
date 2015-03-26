@@ -46,6 +46,24 @@ interface RepositoryInterface {
     public function count(FilterInterface $filter = null);
 
     /**
+     * Delete entity from storage by PK
+     *
+     * @param mixed $pk
+     * @return bool
+     * @throws Exception
+     */
+    public function delete($pk);
+
+    /**
+     * Save entity to storage
+     *
+     * @param EntityInterface $entity
+     * @return bool
+     * @throws Exception
+     */
+    public function save(EntityInterface $entity);
+
+    /**
      * Get model entity
      *
      * @return EntityInterface

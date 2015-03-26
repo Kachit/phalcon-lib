@@ -10,10 +10,15 @@ namespace Kachit\Phalcon\ORM\Entity;
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Behavior\SoftDelete;
 
-class DatabaseTableEntity extends Model implements EntityInterface {
+abstract class DatabaseTableEntity extends Model implements EntityInterface {
 
     const SOFT_DELETE_FIELD = 'deleted';
     const SOFT_DELETE_VALUE = 1;
+
+    /**
+     * Default primary key field
+     */
+    const PRIMARY_KEY_DEFAULT_FIELD = 'id';
 
     /**
      * @var bool use soft delete flag
@@ -47,5 +52,14 @@ class DatabaseTableEntity extends Model implements EntityInterface {
      */
     protected function getSoftDeleteBehavior() {
         return new SoftDelete(['field' => self::SOFT_DELETE_FIELD, 'value' => self::SOFT_DELETE_VALUE]);
+    }
+
+    /**
+     * Get primary key
+     *
+     * @return mixed
+     */
+    public function getPrimaryKey() {
+        return self::PRIMARY_KEY_DEFAULT_FIELD;
     }
 }
