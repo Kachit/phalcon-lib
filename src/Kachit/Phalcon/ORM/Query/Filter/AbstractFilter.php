@@ -15,6 +15,8 @@ abstract class AbstractFilter implements FilterInterface {
     const ORDER_BY_ASC = 'asc';
     const ORDER_BY_DESC = 'desc';
 
+    private $validation;
+
     /**
      * @var int
      */
@@ -113,5 +115,35 @@ abstract class AbstractFilter implements FilterInterface {
     public function setOrderBy(array $orderBy) {
         $this->orderBy = $orderBy;
         return $this;
+    }
+
+    /**
+     * Check is valid filter
+     *
+     * @return bool
+     */
+    public function isValid() {
+        return $this->getValidation()->setData($this->toArray())->isValid();
+    }
+
+    /**
+     * Get validation
+     *
+     * @return Validation
+     */
+    public function getValidation() {
+        if (empty($this->validation)) {
+            $this->validation = $this->initValidation();
+        }
+        return $this->validation;
+    }
+
+    /**
+     * Init validation
+     *
+     * @return Validation
+     */
+    protected function initValidation() {
+        return new Validation();
     }
 }
