@@ -33,7 +33,14 @@ class FilterTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testIsValidFail() {
-        $result = $this->testable->setLimit('foo')->setOffset(0)->isValid();
-        //$this->assertFalse($result);
+        $result = $this->testable->setLimit('foo')->setOffset(null)->isValid();
+        $this->assertFalse($result);
+    }
+
+    public function testIsValidFailGetErrorMessages() {
+        $this->testable->setLimit('foo')->setOffset(null)->isValid();
+        $result = $this->testable->getValidation()->getMessages();
+        $this->assertTrue(is_array($result));
+        var_dump($this->testable->toArray());
     }
 }

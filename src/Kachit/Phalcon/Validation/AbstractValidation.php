@@ -14,7 +14,7 @@ abstract class AbstractValidation implements ValidationInterface {
     /**
      * @var array
      */
-    protected $fields = [];
+    protected $data = [];
 
     /**
      * @var Validation
@@ -23,8 +23,11 @@ abstract class AbstractValidation implements ValidationInterface {
 
     /**
      * Init
+     *
+     * @param array $data
      */
-    public function __construct() {
+    public function __construct(array $data = []) {
+        $this->setData($data);
         $this->validation = new Validation();
         $this->initValidators();
     }
@@ -35,18 +38,18 @@ abstract class AbstractValidation implements ValidationInterface {
      * @return bool
      */
     public function isValid() {
-        $valid = $this->validation->validate($this->fields);
+        $valid = $this->validation->validate($this->data);
         return !count($valid);
     }
 
     /**
      * Set data for validation
      *
-     * @param array $fields
+     * @param array $data
      * @return $this
      */
-    public function setData(array $fields) {
-        $this->fields = $fields;
+    public function setData(array $data) {
+        $this->data = $data;
         return $this;
     }
 
@@ -64,7 +67,7 @@ abstract class AbstractValidation implements ValidationInterface {
     }
 
     /**
-     * Init validators list
+     * Init validators and filters list
      *
      */
     abstract protected function initValidators();

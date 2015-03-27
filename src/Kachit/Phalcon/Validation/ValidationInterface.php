@@ -19,10 +19,10 @@ interface ValidationInterface {
     /**
      * Set data for validation
      *
-     * @param array $fields
+     * @param array $data
      * @return $this
      */
-    public function setData(array $fields);
+    public function setData(array $data);
 
     /**
      * Get error messages

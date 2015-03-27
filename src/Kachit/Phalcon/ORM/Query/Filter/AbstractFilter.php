@@ -15,6 +15,9 @@ abstract class AbstractFilter implements FilterInterface {
     const ORDER_BY_ASC = 'asc';
     const ORDER_BY_DESC = 'desc';
 
+    /**
+     * @var Validation
+     */
     private $validation;
 
     /**
