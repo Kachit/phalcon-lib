@@ -41,6 +41,5 @@ class FilterTest extends \PHPUnit_Framework_TestCase {
         $this->testable->setLimit('foo')->setOffset(null)->isValid();
         $result = $this->testable->getValidation()->getMessages();
         $this->assertTrue(is_array($result));
-        var_dump($this->testable->toArray());
     }
 }

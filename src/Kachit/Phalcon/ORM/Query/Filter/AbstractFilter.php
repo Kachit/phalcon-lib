@@ -136,7 +136,7 @@ abstract class AbstractFilter implements FilterInterface {
      */
     public function getValidation() {
         if (empty($this->validation)) {
-            $this->validation = $this->initValidation();
+            $this->validation = $this->createValidation();
         }
         return $this->validation;
     }
@@ -146,7 +146,16 @@ abstract class AbstractFilter implements FilterInterface {
      *
      * @return Validation
      */
-    protected function initValidation() {
+    protected function createValidation() {
         return new Validation();
+    }
+
+    /**
+     * Get object converter exclude fields
+     *
+     * @return array
+     */
+    protected function getObjectConverterExcludeFields() {
+        return ['validation'];
     }
 }
