@@ -6,6 +6,8 @@
  */
 namespace Kachit\Phalcon\ORM\Query\Filter;
 
+use Kachit\Phalcon\Validation\ValidationInterface;
+
 interface FilterInterface {
 
     /**
@@ -82,4 +84,18 @@ interface FilterInterface {
      * @return $this;
      */
     public function setOrderBy(array $orderBy);
+
+    /**
+     * Check is valid
+     *
+     * @return bool
+     */
+    public function isValid();
+
+    /**
+     * Get validation
+     *
+     * @return ValidationInterface
+     */
+    public function getValidation();
 }
