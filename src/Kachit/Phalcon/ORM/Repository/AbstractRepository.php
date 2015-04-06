@@ -2,7 +2,7 @@
 /**
  * Abstract repository
  * 
- * @author antoxa <kornilov@realweb.ru>
+ * @author Kachit
  * @package Kachit\Phalcon\ORM\Repository
  */
 namespace Kachit\Phalcon\ORM\Repository;

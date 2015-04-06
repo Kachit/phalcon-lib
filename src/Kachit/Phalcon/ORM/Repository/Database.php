@@ -1,6 +1,6 @@
 <?php
 /**
- * Database
+ * Database repository
  *
  * @author Kachit
  * @package Kachit\Phalcon\ORM\Repository

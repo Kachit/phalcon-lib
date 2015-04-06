@@ -3,6 +3,7 @@
  * ArrayElements
  *
  * @author Kachit
+ * @package Kachit\Phalcon\Validation\Validator
  */
 namespace Kachit\Phalcon\Validation\Validator;
 

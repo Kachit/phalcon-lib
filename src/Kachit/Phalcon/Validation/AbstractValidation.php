@@ -2,7 +2,7 @@
 /**
  * Filter fields validator
  * 
- * @author antoxa <kornilov@realweb.ru>
+ * @author Kachit
  * @package Kachit\Phalcon\Validation
  */
 namespace Kachit\Phalcon\Validation;

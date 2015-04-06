@@ -1,8 +1,9 @@
 <?php
 /**
- * Class BuilderInterface
- * 
- * @author antoxa <kornilov@realweb.ru>
+ * Query builder interface
+ *
+ * @author Kachit
+ * @package Kachit\Phalcon\ORM\Query
  */
 namespace Kachit\Phalcon\ORM\Query;
 

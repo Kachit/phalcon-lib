@@ -1,6 +1,6 @@
 <?php
 /**
- * LoaderTrait
+ * Config loader trait
  *
  * @author Kachit
  * @package Kachit\Phalcon\Config

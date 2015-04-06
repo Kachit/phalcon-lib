@@ -1,6 +1,6 @@
 <?php
 /**
- * Class ContentType
+ * Mime types list
  * 
  * @author Kachit
  * @package Kachit\Phalcon\Utils

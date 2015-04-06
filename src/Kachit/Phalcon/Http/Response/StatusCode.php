@@ -1,7 +1,8 @@
 <?php
 /**
  * Http response status code
- * 
+ *
+ * @author Kachit
  * @package Kachit\Phalcon\Http
  */
 namespace Kachit\Phalcon\Http\Response;

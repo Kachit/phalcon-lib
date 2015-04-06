@@ -1,7 +1,8 @@
 <?php
 /**
- * Class FilterInterface
+ * Filter interface
  *
+ * @author Kachit
  * @package Kachit\Phalcon\ORM\Query\Filter
  */
 namespace Kachit\Phalcon\ORM\Query\Filter;

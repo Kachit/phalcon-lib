@@ -1,10 +1,13 @@
 <?php
 /**
  * Cache Manager
+ *
+ * @author Kachit
+ * @package Kachit\Phalcon\Cache
  */
 namespace Kachit\Phalcon\Cache;
 
-use Kachit\Phalcon\Mvc\Model\Query\Filter\FilterInterface;
+use Kachit\Phalcon\ORM\Query\Filter\FilterInterface;
 
 class Manager {
 

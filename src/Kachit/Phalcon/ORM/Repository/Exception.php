@@ -3,6 +3,7 @@
  * Exception
  *
  * @author Kachit
+ * @package Kachit\Phalcon\ORM\Repository
  */
 namespace Kachit\Phalcon\ORM\Repository;
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Class EntityInterface
+ * Entity interface
  *
  * @package Kachit\Phalcon\ORM\Entity
  */

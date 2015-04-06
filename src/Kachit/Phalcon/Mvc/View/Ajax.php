@@ -3,7 +3,7 @@
  * View for ajax requests
  *
  * @author Kachit
- * @package Kachit\Phalcon\Mvc
+ * @package Kachit\Phalcon\Mvc\View
  */
 namespace Kachit\Phalcon\Mvc\View;
 

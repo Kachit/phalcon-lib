@@ -1,8 +1,9 @@
 <?php
 /**
- * Loader
- * 
- * @author antoxa <kornilov@realweb.ru>
+ * Config loader by file
+ *
+ * @author Kachit
+ * @package Kachit\Phalcon\Config
  */
 namespace Kachit\Phalcon\Config;
 

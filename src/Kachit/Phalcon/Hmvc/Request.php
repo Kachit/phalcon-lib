@@ -1,8 +1,9 @@
 <?php
 /**
- * Widgets
+ * Hmvc request
  *
  * @author Kachit
+ * @package Kachit\Phalcon\DI
  */
 namespace Kachit\Phalcon\Hmvc;
 
