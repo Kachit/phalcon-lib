@@ -1,8 +1,8 @@
 <?php
 /**
- * Class Validator
- * 
- * @author antoxa <kornilov@realweb.ru>
+ * Filter params validator
+ *
+ * @author Kachit
  * @package Kachit\Phalcon\ORM\Query\Filter
  */
 namespace Kachit\Phalcon\ORM\Query\Filter;

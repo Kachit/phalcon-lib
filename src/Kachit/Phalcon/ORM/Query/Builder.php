@@ -1,6 +1,6 @@
 <?php
 /**
- * Builder
+ * Query builder
  *
  * @author Kachit
  * @package Kachit\Phalcon\ORM\Query

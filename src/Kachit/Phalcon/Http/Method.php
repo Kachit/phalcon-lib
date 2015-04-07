@@ -1,6 +1,9 @@
 <?php
 /**
  * Http methods
+ *
+ * @author Kachit
+ * @package Kachit\Phalcon\Http
  */
 namespace Kachit\Phalcon\Http;
 

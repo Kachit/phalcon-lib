@@ -2,6 +2,8 @@
 /**
  * Environment settings detector
  *
+ * @author Kachit
+ * @package Kachit\Phalcon\Bootstrap
  * @https://github.com/ventoviro/windwalker-environment
  */
 namespace Kachit\Phalcon\Bootstrap;

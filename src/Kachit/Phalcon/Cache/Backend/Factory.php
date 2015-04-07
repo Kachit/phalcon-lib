@@ -1,8 +1,9 @@
 <?php
 /**
- * Class Factory
+ * Backend cache adapters factory
  *
  * @author Kachit
+ * @package Kachit\Phalcon\Cache\Backend
  */
 namespace Kachit\Phalcon\Cache\Backend;
 

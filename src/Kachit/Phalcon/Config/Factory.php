@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Factory
+ * Config adapters factory
  * 
  * @author antoxa <kornilov@realweb.ru>
  * @package Kachit\Phalcon\Config

@@ -3,6 +3,7 @@
  * Query filter abstract
  *
  * @author Kachit
+ * @package Kachit\Phalcon\ORM\Query\Filter
  */
 namespace Kachit\Phalcon\ORM\Query\Filter;
 

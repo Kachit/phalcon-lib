@@ -3,6 +3,7 @@
  * InjectableTrait
  *
  * @author Kachit
+ * @package Kachit\Phalcon\DI
  */
 namespace Kachit\Phalcon\DI;
 
