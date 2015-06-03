@@ -17,7 +17,7 @@ trait InjectableTrait {
     private $di;
 
     /**
-     * Get di
+     * Get DI
      *
      * @return DI
      */
