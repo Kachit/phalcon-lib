@@ -6,7 +6,7 @@
         "teapot/status": "dev-master",
         "kachit/helpers": "dev-master",
         "kachit/phalcon-tester": "dev-master",
-        "phalcon/incubator": "dev-master",
+        "phalcon/incubator": "v1.3.5",
         "snowair/phalcon-debugbar": "dev-master"
     },
     "require-dev": {
